@@ -22,7 +22,7 @@ public class Server implements Runnable {
 			System.out.println("system port is:"+port);
 			ServerSocket socket = new ServerSocket(Integer.parseInt(port));
 			while(true) {//each iteration of this loop handles a different request
-				System.out.println("ready to accept a request");
+				System.out.println("ready to accept a request(loop restarted)");
 				Server s = new Server(socket.accept());
 	    		Thread t = new Thread(s);
 	        	t.run();
@@ -39,9 +39,12 @@ public class Server implements Runnable {
 
 	@Override
 	public void run() {
+		BufferedInputStream in = null;
 		BufferedOutputStream outputStream=null;
 		PrintWriter out=null;
 		try {
+			in = new BufferedInputStream(client.getInputStream());
+			System.out.println("Input line: "+in.nextLine());
 			File index = new File("public/index.html");
 			byte[] outputData = readFileData(index);
 			outputStream = new BufferedOutputStream(client.getOutputStream());
@@ -54,14 +57,14 @@ public class Server implements Runnable {
 			out.println(); // blank line between headers and content, very important !
 			out.flush(); // flush character output stream buffer
 			outputStream.write(outputData,0,outputData.length);
-			outputStream.flush();
+			outputStream.flush();//socketexception here
 			System.out.println("outputstream flushed");
 		} catch (IOException e) {				
 			e.printStackTrace();
 		} finally {
 			try {
 				System.out.println("streams closing");
-				outputStream.close();
+				outputStream.close();//socketexception here
 				out.close();
 				client.close();
 			} catch (IOException e) {
