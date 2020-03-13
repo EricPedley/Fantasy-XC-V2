@@ -18,6 +18,9 @@ public class Server implements Runnable {
     public static void main(String[] args) {
     	try {
 			String port = System.getenv("PORT");
+			if(port==null) {
+				port="6969";
+			}
 			System.out.println("system port is:"+port);
 			ServerSocket socket = new ServerSocket(Integer.parseInt(port));
 			while(true) {//each iteration of this loop handles a different request
