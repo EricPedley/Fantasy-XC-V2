@@ -1,1 +1,1 @@
-web: java target/classes/Server
+web: java -cp target/classes main.java.Server
