@@ -41,8 +41,8 @@ public class Server implements Runnable {
 
 	@Override
 	public void run() {
-		BufferedOutputStream outputStream;
-		PrintWriter out;
+		BufferedOutputStream outputStream=null;
+		PrintWriter out=null;
 		try {
 			File index = new File("public/index.html");
 			byte[] outputData = readFileData(index);
@@ -60,8 +60,13 @@ public class Server implements Runnable {
 		} catch (IOException e) {				
 			e.printStackTrace();
 		} finally {
-			outputStream.close();
-			out.close();
+			try {
+				outputStream.close();
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		
