@@ -46,7 +46,7 @@ public class Server implements Runnable {
 		PrintWriter out=null;
 		try {
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			System.out.println("Input line: "+in);
+			System.out.println("Input line: "+in.readLine());
 			File index = new File("public/index.html");
 			byte[] outputData = readFileData(index);
 			outputStream = new BufferedOutputStream(client.getOutputStream());
