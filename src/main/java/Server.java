@@ -65,6 +65,7 @@ public class Server implements Runnable {
 			try {
 				System.out.println("streams closing");
 				outputStream.close();//socketexception here
+				in.close();
 				out.close();
 				client.close();
 			} catch (IOException e) {
