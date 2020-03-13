@@ -69,7 +69,6 @@ public class Server implements Runnable {
 				fileInputStream.close();
 				
 		}
-		
 		return fileData;
 	}
 }
