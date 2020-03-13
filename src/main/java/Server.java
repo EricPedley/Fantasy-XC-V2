@@ -41,11 +41,13 @@ public class Server implements Runnable {
 
 	@Override
 	public void run() {
+		BufferedOutputStream outputStream;
+		PrintWriter out;
 		try {
 			File index = new File("public/index.html");
 			byte[] outputData = readFileData(index);
-			BufferedOutputStream outputStream = new BufferedOutputStream(client.getOutputStream());
-			PrintWriter out = new PrintWriter(client.getOutputStream());
+			outputStream = new BufferedOutputStream(client.getOutputStream());
+			out = new PrintWriter(client.getOutputStream());
 			out.println("HTTP/1.1 200 OK");
 			out.println("Server: Eric's First Java Server : 1.0");
 			out.println("Date: " + new Date());
@@ -57,6 +59,9 @@ public class Server implements Runnable {
 			outputStream.flush();
 		} catch (IOException e) {				
 			e.printStackTrace();
+		} finally {
+			outputStream.close();
+			out.close();
 		}
 
 		
