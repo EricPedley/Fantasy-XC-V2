@@ -65,6 +65,7 @@ public class Server implements Runnable {
 				System.out.println("streams closing");
 				outputStream.close();
 				out.close();
+				client.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
