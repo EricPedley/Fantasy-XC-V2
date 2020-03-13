@@ -57,10 +57,12 @@ public class Server implements Runnable {
 			out.flush(); // flush character output stream buffer
 			outputStream.write(outputData,0,outputData.length);
 			outputStream.flush();
+			System.out.println("outputstream flushed");
 		} catch (IOException e) {				
 			e.printStackTrace();
 		} finally {
 			try {
+				System.out.println("streams closing");
 				outputStream.close();
 				out.close();
 			} catch (IOException e) {
