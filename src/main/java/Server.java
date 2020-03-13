@@ -17,7 +17,7 @@ public class Server implements Runnable {
 	Socket client;
     public static void main(String[] args) {
     	try {
-			ServerSocket socket = new ServerSocket(6969);
+			ServerSocket socket = new ServerSocket(System.getenv("PORT"));
 			while(true) {//each iteration of this loop handles a different request
 				System.out.println("ready to accept a request");
 				Server s = new Server(socket.accept());
