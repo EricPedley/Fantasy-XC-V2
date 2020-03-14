@@ -49,12 +49,15 @@ public class Server implements Runnable {
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			File file = null;
 			String rawRequest = in.readLine();
+			String line2 = in.readLine();
+			System.out.println(line2);
 			System.out.println("raw request: " + rawRequest);
 			if (rawRequest != null) {
 				String[] request = rawRequest.split(" ");
 				String method = request[0];
 				System.out.println(method);
 				String resource = request[1];
+				
 				if (method.equals("GET")) {
 					if (resource.endsWith("/")) {
 						resource += "index.html";
