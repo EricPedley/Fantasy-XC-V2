@@ -46,16 +46,24 @@ public class Server implements Runnable {
 		PrintWriter out=null;
 		try {
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			System.out.println("Input line: "+in.readLine());
-			File index = new File("public/index.html");
-			byte[] outputData = readFileData(index);
+			File file=null;
+			String[] request = in.readLine().split(" ");
+			String method = request[0].trim();
+			String resource = request[1].trim();
+			if(method=="GET") {
+				if(resource.endsWith("/")) {
+					resource+="index.html";
+				}
+				file = new File(resource);
+			}
+			byte[] outputData = readFileData(file);
 			outputStream = new BufferedOutputStream(client.getOutputStream());
 			out = new PrintWriter(client.getOutputStream());
 			out.println("HTTP/1.1 200 OK");
 			out.println("Server: Eric's First Java Server : 1.0");
 			out.println("Date: " + new Date());
 			out.println("Content-type: " + "text/html");
-			out.println("Content-length: " + index.length());
+			out.println("Content-length: " + file.length());
 			out.println(); // blank line between headers and content, very important !
 			out.flush(); // flush character output stream buffer
 			outputStream.write(outputData,0,outputData.length);
