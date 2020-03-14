@@ -25,8 +25,6 @@ public class JavaHTTPServer implements Runnable{
 	static final String DEFAULT_FILE = "index.html";
 	static final String FILE_NOT_FOUND = "404.html";
 	static final String METHOD_NOT_SUPPORTED = "not_supported.html";
-	// port to listen connection
-	static final int PORT = 8080;
 	
 	// verbose mode
 	static final boolean verbose = true;
@@ -40,8 +38,12 @@ public class JavaHTTPServer implements Runnable{
 	
 	public static void main(String[] args) {
 		try {
-			ServerSocket serverConnect = new ServerSocket(PORT);
-			System.out.println("Server started.\nListening for connections on port : " + PORT + " ...\n");
+			String port = System.getenv("PORT");
+			if (port == null) {
+				port = "6969";
+			}
+			ServerSocket serverConnect = new ServerSocket(Integer.parseInt(port));
+			System.out.println("Server started.\nListening for connections on port : " + port + " ...\n");
 			
 			// we listen until user halts server execution
 			while (true) {

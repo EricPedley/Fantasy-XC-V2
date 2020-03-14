@@ -61,14 +61,14 @@ public class Server implements Runnable {
 						System.out.println("request is get and ends with a slash");
 					}
 					file = new File("public/" + resource);
-
+					String contentType = getContentType(resource);
 					byte[] outputData = readFileData(file);
 					outputStream = new BufferedOutputStream(client.getOutputStream());
 					out = new PrintWriter(client.getOutputStream());
 					out.println("HTTP/1.1 200 OK");
 					out.println("Server: Eric's First Java Server : 1.0");
 					out.println("Date: " + new Date());
-					out.println("Content-type: " + "text/html");
+					out.println("Content-type: " + "text/"+contentType);
 					out.println("Content-length: " + file.length());
 					out.println(); // blank line between headers and content, very important !
 					out.flush(); // flush character output stream buffer
@@ -114,4 +114,12 @@ public class Server implements Runnable {
 		}
 		return fileData;
 	}
+	
+	private String getContentType(String fileRequested) {
+		if (fileRequested.endsWith(".htm")  ||  fileRequested.endsWith(".html"))
+			return "text/html";
+		else
+			return "text/plain";
+	}
+	
 }
