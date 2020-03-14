@@ -69,12 +69,12 @@ public class Server implements Runnable {
 					byte[] outputData = readFileData(file);
 					outputStream = new BufferedOutputStream(client.getOutputStream());
 					out = new PrintWriter(client.getOutputStream());
-					out.println("HTTP/1.1 200 OK");
-					out.println("Server: Eric's First Java Server : 1.0");
-					out.println("Date: " + new Date());
-					out.println("Content-type: " + contentType);
-					out.println("Content-length: " + file.length());
-					out.println(); // blank line between headers and content, very important !
+					out.print("HTTP/1.1 200 OK\r\n");
+					out.print("Server: Eric's First Java Server : 1.0\r\n");
+					out.print("Date: " + new Date()+"\r\n");
+					out.print("Content-type: " + contentType+"\r\n");
+					out.print("Content-length: " + file.length()+"\r\n");
+					out.print("\r\n"); // blank line between headers and content, very important !
 					out.flush(); // flush character output stream buffer
 					outputStream.write(outputData, 0, outputData.length);
 					outputStream.flush();
