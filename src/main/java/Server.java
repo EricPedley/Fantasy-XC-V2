@@ -73,7 +73,7 @@ public class Server implements Runnable {
 					out.println(); // blank line between headers and content, very important !
 					out.flush(); // flush character output stream buffer
 					outputStream.write(outputData, 0, outputData.length);
-					outputStream.flush();// socketexception here
+					outputStream.flush();
 					System.out.println("outputstream flushed");
 
 				}
@@ -82,12 +82,12 @@ public class Server implements Runnable {
 			e.printStackTrace();
 		} finally {
 			try {
-//				System.out.println("streams closing");
-//				if (outputStream != null) {
-//					outputStream.close();// socketexception here
-//					in.close();
-//					out.close();
-//				}
+				System.out.println("streams closing");
+				if (outputStream != null) {
+					outputStream.close();
+					in.close();
+					out.close();
+				}
 				client.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
