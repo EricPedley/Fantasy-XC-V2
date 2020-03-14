@@ -86,6 +86,8 @@ public class Server implements Runnable {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch(NullPointerException e2) {
+				e2.printStackTrace();
 			}
 		}
 
