@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
@@ -21,7 +20,7 @@ public class Server implements Runnable {
 	}
 
 	@Override
-	public void run() {
+	public void run() {//each time this method runs it handles one request
 		BufferedReader in = null;
 		BufferedOutputStream outputStream = null;
 		PrintWriter out = null;
@@ -61,10 +60,11 @@ public class Server implements Runnable {
 			e.printStackTrace();
 		} finally {
 			try {
-				outputStream.close();
-				in.close();
-				out.close();
-
+				if(in!=null) {
+					outputStream.close();
+					in.close();
+					out.close();
+				}
 				client.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
