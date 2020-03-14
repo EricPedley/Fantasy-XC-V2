@@ -11,6 +11,7 @@ public class Main {
 				port = "6969";
 			}
 			ServerSocket socket = new ServerSocket(Integer.parseInt(port));
+			System.out.println("Listening on port "+port);
 			while (true) {// each iteration of this loop handles a different request
 				Server s = new Server(socket.accept());
 				Thread t = new Thread(s);
