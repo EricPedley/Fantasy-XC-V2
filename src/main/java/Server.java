@@ -49,7 +49,7 @@ public class Server implements Runnable {
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			File file = null;
 			String rawRequest = in.readLine();
-			System.out.println("raw request: "+rawRequest);
+			System.out.println("raw request: " + rawRequest);
 			if (rawRequest != null) {
 				String[] request = rawRequest.split(" ");
 				String method = request[0];
@@ -83,15 +83,15 @@ public class Server implements Runnable {
 		} finally {
 			try {
 				System.out.println("streams closing");
-				outputStream.close();// socketexception here
-				in.close();
-				out.close();
+				if (outputStream != null) {
+					outputStream.close();// socketexception here
+					in.close();
+					out.close();
+				}
 				client.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (NullPointerException e2) {
-				e2.printStackTrace();
 			}
 		}
 
