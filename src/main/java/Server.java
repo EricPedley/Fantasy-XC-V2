@@ -48,31 +48,32 @@ public class Server implements Runnable {
 		try {
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			File file = null;
-			String[] request = in.readLine().split(" ");
-			String method = request[0].trim();
-			String resource = request[1].trim();
-			if (method == "GET") {
-				if (resource.endsWith("/")) {
-					resource += "index.html";
+			String rawRequest = in.readLine();
+			if (rawRequest != null) {
+				String[] request = rawRequest.split(" ");
+				String method = request[0].trim();
+				String resource = request[1].trim();
+				if (method == "GET") {
+					if (resource.endsWith("/")) {
+						resource += "index.html";
+					}
+					file = new File("public/" + resource);
+
+					byte[] outputData = readFileData(file);
+					outputStream = new BufferedOutputStream(client.getOutputStream());
+					out = new PrintWriter(client.getOutputStream());
+					out.println("HTTP/1.1 200 OK");
+					out.println("Server: Eric's First Java Server : 1.0");
+					out.println("Date: " + new Date());
+					out.println("Content-type: " + "text/html");
+					out.println("Content-length: " + file.length());
+					out.println(); // blank line between headers and content, very important !
+					out.flush(); // flush character output stream buffer
+					outputStream.write(outputData, 0, outputData.length);
+					outputStream.flush();// socketexception here
+					System.out.println("outputstream flushed");
+
 				}
-				file = new File("public/" + resource);
-			}
-			if (file != null) {
-				byte[] outputData = readFileData(file);
-				outputStream = new BufferedOutputStream(client.getOutputStream());
-				out = new PrintWriter(client.getOutputStream());
-				out.println("HTTP/1.1 200 OK");
-				out.println("Server: Eric's First Java Server : 1.0");
-				out.println("Date: " + new Date());
-				out.println("Content-type: " + "text/html");
-				out.println("Content-length: " + file.length());
-				out.println(); // blank line between headers and content, very important !
-				out.flush(); // flush character output stream buffer
-				outputStream.write(outputData, 0, outputData.length);
-				outputStream.flush();// socketexception here
-				System.out.println("outputstream flushed");
-			} else {
-				System.out.println("file was null");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -86,7 +87,7 @@ public class Server implements Runnable {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch(NullPointerException e2) {
+			} catch (NullPointerException e2) {
 				e2.printStackTrace();
 			}
 		}
