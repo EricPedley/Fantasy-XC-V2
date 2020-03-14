@@ -137,6 +137,7 @@ public class JavaHTTPServer implements Runnable {
 
 						dataOut.write(fileData, 0, fileLength);
 						dataOut.flush();
+						Thread.sleep(500);
 					}
 
 					if (verbose) {
@@ -155,6 +156,9 @@ public class JavaHTTPServer implements Runnable {
 
 		} catch (IOException ioe) {
 			System.err.println("Server error : " + ioe);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			try {
 				in.close();
