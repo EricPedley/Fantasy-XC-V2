@@ -54,7 +54,7 @@ public class Server implements Runnable {
 				if(resource.endsWith("/")) {
 					resource+="index.html";
 				}
-				file = new File(resource);
+				file = new File("public/"+resource);
 			}
 			byte[] outputData = readFileData(file);
 			outputStream = new BufferedOutputStream(client.getOutputStream());
