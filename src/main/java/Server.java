@@ -52,11 +52,13 @@ public class Server implements Runnable {
 			System.out.println("raw request: "+rawRequest);
 			if (rawRequest != null) {
 				String[] request = rawRequest.split(" ");
-				String method = request[0].trim();
-				String resource = request[1].trim();
-				if (method == "GET") {
+				String method = request[0];
+				System.out.println(method);
+				String resource = request[1];
+				if (method.equals("GET")) {
 					if (resource.endsWith("/")) {
 						resource += "index.html";
+						System.out.println("request is get and ends with a slash");
 					}
 					file = new File("public/" + resource);
 
