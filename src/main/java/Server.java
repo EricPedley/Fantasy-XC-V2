@@ -49,6 +49,7 @@ public class Server implements Runnable {
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			File file = null;
 			String rawRequest = in.readLine();
+			System.out.println("raw request: "+rawRequest);
 			if (rawRequest != null) {
 				String[] request = rawRequest.split(" ");
 				String method = request[0].trim();
