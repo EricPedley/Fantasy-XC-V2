@@ -49,8 +49,9 @@ public class Server implements Runnable {
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			File file = null;
 			String rawRequest = in.readLine();
-			String line2 = in.readLine();
-			System.out.println(line2);
+			while(in.ready()) {
+				System.out.println("input line:"+in.readLine());
+			}
 			System.out.println("raw request: " + rawRequest);
 			if (rawRequest != null) {
 				String[] request = rawRequest.split(" ");
@@ -71,7 +72,7 @@ public class Server implements Runnable {
 					out.println("HTTP/1.1 200 OK");
 					out.println("Server: Eric's First Java Server : 1.0");
 					out.println("Date: " + new Date());
-					out.println("Content-type: " + "text/"+contentType);
+					out.println("Content-type: " + contentType);
 					out.println("Content-length: " + file.length());
 					out.println(); // blank line between headers and content, very important !
 					out.flush(); // flush character output stream buffer
