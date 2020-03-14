@@ -22,8 +22,8 @@ public class Server implements Runnable {
 	@Override
 	public void run() {//each time this method runs it handles one request
 		BufferedReader in = null;
-		BufferedOutputStream outputStream = null;
-		PrintWriter out = null;
+		BufferedOutputStream dataOutput = null;
+		PrintWriter headerOutput = null;
 		try {
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			String rawRequest = in.readLine();
@@ -42,17 +42,17 @@ public class Server implements Runnable {
 				File file = new File("public/" + resource);
 				String contentType = getContentType(resource);
 				byte[] outputData = readFileData(file);
-				outputStream = new BufferedOutputStream(client.getOutputStream());
-				out = new PrintWriter(client.getOutputStream());
-				out.print("HTTP/1.1 200 OK\r\n");// you need to use \r\n instead of a println or else it crashes
-				out.print("Server: Fantasy XC Server : 1.0\r\n");
-				out.print("Date: " + new Date() + "\r\n");
-				out.print("Content-type: " + contentType + "\r\n");
-				out.print("Content-length: " + file.length() + "\r\n");
-				out.print("\r\n"); // blank line between headers and content, very important !
-				out.flush(); // flush character output stream buffer
-				outputStream.write(outputData, 0, outputData.length);
-				outputStream.flush();
+				dataOutput = new BufferedOutputStream(client.getOutputStream());
+				headerOutput = new PrintWriter(client.getOutputStream());
+				headerOutput.print("HTTP/1.1 200 OK\r\n");// you need to use \r\n instead of a println or else it crashes
+				headerOutput.print("Server: Fantasy XC Server : 1.0\r\n");
+				headerOutput.print("Date: " + new Date() + "\r\n");
+				headerOutput.print("Content-type: " + contentType + "\r\n");
+				headerOutput.print("Content-length: " + file.length() + "\r\n");
+				headerOutput.print("\r\n"); // blank line between headers and content, very important !
+				headerOutput.flush(); // flush character output stream buffer
+				dataOutput.write(outputData, 0, outputData.length);
+				dataOutput.flush();
 
 			}
 
@@ -61,9 +61,9 @@ public class Server implements Runnable {
 		} finally {
 			try {
 				in.close();
-				if(out!=null) {
-					outputStream.close();
-					out.close();
+				if(headerOutput!=null) {
+					dataOutput.close();
+					headerOutput.close();
 				}
 				client.close();
 			} catch (IOException e) {
