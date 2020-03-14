@@ -60,9 +60,9 @@ public class Server implements Runnable {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(in!=null) {
+				in.close();
+				if(out!=null) {
 					outputStream.close();
-					in.close();
 					out.close();
 				}
 				client.close();
