@@ -82,12 +82,12 @@ public class Server implements Runnable {
 			e.printStackTrace();
 		} finally {
 			try {
-				System.out.println("streams closing");
-				if (outputStream != null) {
-					outputStream.close();// socketexception here
-					in.close();
-					out.close();
-				}
+//				System.out.println("streams closing");
+//				if (outputStream != null) {
+//					outputStream.close();// socketexception here
+//					in.close();
+//					out.close();
+//				}
 				client.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
