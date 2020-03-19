@@ -20,13 +20,13 @@ public class Server implements Runnable {
 	}
 
 	@Override
-	public void run() {//each time this method runs it handles one request
-		BufferedReader in = null;//input stream
-		BufferedOutputStream dataOut = null;//output stream for body of response
-		PrintWriter headerOut = null;//output stream for head of response
+	public void run() {// each time this method runs it handles one request
+		BufferedReader in = null;// input stream
+		BufferedOutputStream dataOut = null;// output stream for body of response
+		PrintWriter headerOut = null;// output stream for head of response
 		try {
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			String rawRequest = in.readLine();//first line of request
+			String rawRequest = in.readLine();// first line of request
 			if (rawRequest == null) {
 				System.out.println("null request, terminating thread");
 				return;
@@ -40,8 +40,8 @@ public class Server implements Runnable {
 					resource += "index.html";
 				}
 				File file = new File("public/" + resource);
-				String contentType = getContentType(resource);//content type is what type of file
-				byte[] outputData = readFileData(file);//converts file into array of bytes
+				String contentType = getContentType(resource);// content type is what type of file
+				byte[] outputData = readFileData(file);// converts file into array of bytes
 				dataOut = new BufferedOutputStream(client.getOutputStream());
 				headerOut = new PrintWriter(client.getOutputStream());
 				headerOut.print("HTTP/1.1 200 OK\r\n");// you need to use \r\n instead of a println or else it crashes
@@ -61,7 +61,8 @@ public class Server implements Runnable {
 		} finally {
 			try {
 				in.close();
-				if(headerOut!=null) {//this condition happens when the response is null and the code to initialize the output streams never runs
+				if (headerOut != null) {// this condition happens when the response is null and the code to initialize
+										// the output streams never runs
 					dataOut.close();
 					headerOut.close();
 				}
