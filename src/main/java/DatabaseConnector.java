@@ -8,7 +8,7 @@ public class DatabaseConnector {
 		Connection c = null;
 		try {
 			Class.forName("org.postgresql.Driver");
-			c = DriverManager.getConnection(url, "eric", "1234");
+			c = DriverManager.getConnection(url, "essggmgpyritgn", "226d5952c81905ab5d6e176ac53e686d7fa41d25aece4f631cdebe78855a6dc8");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());

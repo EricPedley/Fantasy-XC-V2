@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 
 public class Main {
 	public static void main(String[] args) {
-		String databaseURL = "jdbc:postgresql://essggmgpyritgn:226d5952c81905ab5d6e176ac53e686d7fa41d25aece4f631cdebe78855a6dc8@ec2-52-23-14-156.compute-1.amazonaws.com:5432/dbo4aa6j9pt62c";
+		String databaseURL = "jdbc:postgresql://ec2-52-23-14-156.compute-1.amazonaws.com:5432/dbo4aa6j9pt62c";
 		new DatabaseConnector().connect(databaseURL);
 		try {
 			String port = System.getenv("PORT");
