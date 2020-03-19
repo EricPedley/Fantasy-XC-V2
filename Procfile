@@ -1,1 +1,1 @@
-web: java -cp target/classes main.java.Main
+web: java -cp target/classes;repo/org/postgresql/Driver/1.0/Driver-1.0.jar main.java.Main
