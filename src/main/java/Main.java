@@ -25,4 +25,3 @@ public class Main {
 	}
 }
 
-mvn deploy:deploy-file -Durl=file://C:\Users\Generic\git\Fantasy-XC-V2\repo -Dfile=postgresql-42.2.11.jar -DgroupId=org.postgresql -DartifactId=Driver -Dpackaging=jar -Dversion=1.0
