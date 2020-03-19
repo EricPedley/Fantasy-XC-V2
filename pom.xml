@@ -19,7 +19,7 @@
 		<repository>
 			<id>project.local</id>
 			<name>project</name>
-			<url>file:${project.basedir}/repo</url>
+			<url>file://${project.basedir}/repo</url>
 		</repository>
 	</repositories>
 
@@ -30,4 +30,25 @@
 			<version>1.0</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<!-- any other plugins -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>attached</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
