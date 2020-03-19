@@ -1,1 +1,1 @@
-web: java -cp target/classes;lib/postgresql-42.2.11.jar main.java.Main
+web: java -cp target/classes main.java.Main
