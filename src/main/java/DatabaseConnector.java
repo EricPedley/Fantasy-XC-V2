@@ -14,10 +14,13 @@ public class DatabaseConnector {
 				"226d5952c81905ab5d6e176ac53e686d7fa41d25aece4f631cdebe78855a6dc8");
 		c.setAutoCommit(false);
 		Statement s = c.createStatement();
-		for(String statement: statements) {
-			s.executeUpdate(statement);
+		if (statements != null) {
+			for (String statement : statements) {
+				s.executeUpdate(statement);
+			}
 		}
 		s.close();
+
 		c.close();
 		System.out.println("Opened database successfully");
 	}
