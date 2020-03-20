@@ -19,7 +19,6 @@ public class Server implements Runnable {
 		client = s;
 	}
 
-	@Override
 	public void run() {// each time this method runs it handles one request
 		BufferedReader in = null;// input stream
 		BufferedOutputStream dataOut = null;// output stream for body of response

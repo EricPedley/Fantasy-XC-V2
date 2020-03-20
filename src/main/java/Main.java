@@ -9,7 +9,6 @@ public class Main {
 		
 		
 		try {
-			new DatabaseConnector().executeStatements(null);
 			String port = System.getenv("PORT");
 			if (port == null) {
 				port = "6969";
@@ -24,11 +23,12 @@ public class Main {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch(SQLException e2) {
-			e2.printStackTrace();
-		} catch(ClassNotFoundException e3) {
-			e3.printStackTrace();
-		}
+		} 
+//		catch(SQLException e2) {
+//			e2.printStackTrace();
+//		} catch(ClassNotFoundException e3) {
+//			e3.printStackTrace();
+//		}
 	}
 }
 
