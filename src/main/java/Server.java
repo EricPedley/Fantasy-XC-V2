@@ -53,7 +53,8 @@ public class Server implements Runnable {
 				headerOut.flush(); // flush character output stream buffer
 				dataOut.write(outputData, 0, outputData.length);
 				dataOut.flush();
-
+			} else if(method.equals("POST")) {
+				System.out.println("post request raw:"+rawRequest);
 			}
 
 		} catch (IOException e) {

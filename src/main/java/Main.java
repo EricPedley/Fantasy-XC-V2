@@ -2,16 +2,18 @@ package main.java;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.sql.SQLException;
 
 public class Main {
 	public static void main(String[] args) {
-		String databaseURL = "jdbc:postgresql://ec2-52-23-14-156.compute-1.amazonaws.com:5432/dbo4aa6j9pt62c";
-		new DatabaseConnector().connect(databaseURL);
+		
+		
 		try {
 			String port = System.getenv("PORT");
 			if (port == null) {
 				port = "6969";
 			}
+			@SuppressWarnings("resource")
 			ServerSocket socket = new ServerSocket(Integer.parseInt(port));
 			System.out.println("Listening on port "+port);
 			while (true) {// each iteration of this loop handles a different request
@@ -21,7 +23,11 @@ public class Main {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} //catch(SQLException e2) {
+//			e2.printStackTrace();
+//		} catch(ClassNotFoundException e3) {
+//			e3.printStackTrace();
+//		}
 	}
 }
 
