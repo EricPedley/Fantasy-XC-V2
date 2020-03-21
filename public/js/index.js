@@ -2,23 +2,30 @@
 
 const e = React.createElement;
 
-class LikeButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { liked: false };
-  }
+function makeRequest() {
+    var request = new XMLHttpRequest();
+    var data = {message:"hi server!!"};
+    request.addEventListener("load", function() {
+        console.log(request.responseText);
+    });
+    request.open('GET', 'http://localhost:6969/endpoint', true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.send(JSON.stringify(data));
+}
 
-  render() {
-    if (this.state.liked) {
-      return 'You liked this.';
+class Button extends React.Component {
+    constructor(props) {
+        super(props);
     }
 
-    return e(
-      'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
-    );
-  }
+    render() {
+
+        return e(
+            'button',
+            { onClick: () => makeRequest() },
+            'do stuff'
+        );
+    }
 }
-const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+const domContainer = document.querySelector('#button');
+ReactDOM.render(e(Button), domContainer);

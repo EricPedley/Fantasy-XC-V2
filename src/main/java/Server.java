@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Date;
 
 public class Server implements Runnable {
@@ -52,8 +53,19 @@ public class Server implements Runnable {
 				headerOut.flush(); // flush character output stream buffer
 				dataOut.write(outputData, 0, outputData.length);
 				dataOut.flush();
-			} else if(method.equals("POST")) {
-				System.out.println("post request raw:"+rawRequest);
+			} else if (method.equals("POST")) {
+				System.out.println("post request raw:" + rawRequest);
+				try {
+					while (in.ready()) {// BUG HERE: last line of request(body) does not print until after the browser
+										// forcibly closes the connection
+						System.out.println("request line: " + in.readLine());
+					}
+				} catch (SocketException e) {// FIX: made the browser timeout, which closes the connection and causes an
+												// error, which is caught here. This solution should be changed once I
+												// figure out a real way to solve the bug
+					System.out.println("socket exception, probably caused by request timeout, might not be though");
+				}
+				System.out.println("finished while loop?");
 			}
 
 		} catch (IOException e) {
