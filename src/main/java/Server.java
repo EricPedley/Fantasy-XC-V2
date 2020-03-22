@@ -12,6 +12,8 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.Date;
 
+import org.json.JSONObject;
+
 public class Server implements Runnable {
 
 	Socket client;
@@ -56,10 +58,15 @@ public class Server implements Runnable {
 			} else if (method.equals("POST")) {
 				System.out.println("post request raw:" + rawRequest);
 				try {
+					String lastLine =null;
 					while (in.ready()) {// BUG HERE: last line of request(body) does not print until after the browser
 										// forcibly closes the connection
-						System.out.println("request line: " + in.readLine());
+						lastLine=in.readLine();
+						System.out.println("request line: " + lastLine);
 					}
+					System.out.println("response body:"+lastLine);
+					JSONObject obj = new JSONObject(lastLine);
+					System.out.println(obj.getString("bruh"));
 				} catch (SocketException e) {// FIX: made the browser timeout, which closes the connection and causes an
 												// error, which is caught here. This solution should be changed once I
 												// figure out a real way to solve the bug

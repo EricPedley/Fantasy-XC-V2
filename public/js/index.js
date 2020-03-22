@@ -2,10 +2,9 @@
 
 const e = React.createElement;
 
-function makeRequest() {
+function makeRequest(data) {
     var request = new XMLHttpRequest();
     request.upload.timeout=5000;
-    var data = {message:"hi server!!"};
     request.upload.onprogress = function(event) {
         console.log(`Uploaded ${event.loaded} of ${event.total} bytes`);
       };
@@ -38,7 +37,7 @@ class Button extends React.Component {
 
         return e(
             'button',
-            { onClick: () => makeRequest() },
+            { onClick: () => makeRequest({stuff: "things!", bruh: "moment"}) },
             'do stuff'
         );
     }
