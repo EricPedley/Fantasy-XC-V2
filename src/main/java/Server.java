@@ -64,9 +64,9 @@ public class Server implements Runnable {
 						lastLine=in.readLine();
 						System.out.println("request line: " + lastLine);
 					}
+					
 					System.out.println("response body:"+lastLine);
 					JSONObject obj = new JSONObject(lastLine);
-					System.out.println(obj.getString("bruh"));
 				} catch (SocketException e) {// FIX: made the browser timeout, which closes the connection and causes an
 												// error, which is caught here. This solution should be changed once I
 												// figure out a real way to solve the bug
