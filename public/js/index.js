@@ -2,7 +2,7 @@
 
 const e = React.createElement;
 
-function makeRequest(data) {
+function POST(data) {
     var request = new XMLHttpRequest();
     request.upload.timeout=5000;
     request.upload.onprogress = function(event) {
@@ -28,19 +28,6 @@ function makeRequest(data) {
     
 }
 
-class Button extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
-    render() {
-
-        return e(
-            'button',
-            { onClick: () => makeRequest({stuff: "things!", bruh: "moment"}) },
-            'do stuff'
-        );
-    }
-}
-const domContainer = document.querySelector('#button');
-ReactDOM.render(e(Button), domContainer);
+const domContainer = document.querySelector('#login');
+ReactDOM.render(e(Login), domContainer);

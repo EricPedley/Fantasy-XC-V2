@@ -1,5 +1,7 @@
 package main.java.endpoints;
 
+import org.json.JSONObject;
+
 public class Waivers implements Endpoint {
 	
 	public Waivers () {
@@ -11,12 +13,12 @@ public class Waivers implements Endpoint {
 		
 	}
 
-	public void handePOST() {
+	public void handePOST(JSONObject data) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void handePATCH() {
+	public void handePATCH(JSONObject data) {
 		// TODO Auto-generated method stub
 		
 	}
