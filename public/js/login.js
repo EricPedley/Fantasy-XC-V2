@@ -4,9 +4,11 @@ class Login extends React.Component {
         return (
             <center style = {{backgroundColor:"FF0000"}}>
                 <h3>Login:</h3>
-                <input type ="text" id = "username"></input><br></br>
-                <input type ="text" id = "password"></input><br></br>
-                <button id = "submitLogin">Login</button>
+                <form id = "login" method = "POST" target = "_self">
+                    <input type = "text" name = "user"></input><br></br>
+                    <input type = "text" name = "pass"></input><br></br>
+                    <input type = "submit"></input><br></br>
+                </form>
             </center>
         );
     }

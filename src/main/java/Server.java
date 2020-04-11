@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.Date;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Server implements Runnable {
@@ -57,21 +58,26 @@ public class Server implements Runnable {
 				dataOut.flush();
 			} else if (method.equals("POST")) {
 				System.out.println("post request raw:" + rawRequest);
-				try {
-					String lastLine =null;
-					while (in.ready()) {// BUG HERE: last line of request(body) does not print until after the browser
-										// forcibly closes the connection
-						lastLine=in.readLine();
-						System.out.println("request line: " + lastLine);
-					}
-					
-					System.out.println("response body:"+lastLine);
-					JSONObject obj = new JSONObject(lastLine);
-				} catch (SocketException e) {// FIX: made the browser timeout, which closes the connection and causes an
-												// error, which is caught here. This solution should be changed once I
-												// figure out a real way to solve the bug
-					System.out.println("socket exception, probably caused by request timeout, might not be though");
+				String lastLine = null;
+				int contentLength = -1;
+				String contentType =null;
+				while ((lastLine = in.readLine()) != null) {// reads headers
+					System.out.println(lastLine);
+					if (contentLength == -1 && lastLine.substring(0, 9).equals("Content-L"))
+						contentLength = Integer.parseInt(lastLine.substring(16));
+					if (contentType == null && lastLine.substring(0, 9).equals("Content-T"))
+						contentType = lastLine.substring(15);
+					if (lastLine.length() == 0)
+						break;
 				}
+				String body = "";
+				for (int i = 0; i < contentLength; i++) {
+					body += (char) in.read();
+				}
+				System.out.println("body:" + body);
+				if()
+				String response = "this is the response";
+				sendResponse(dataOut, headerOut, response);
 				System.out.println("finished while loop?");
 			}
 
@@ -116,6 +122,22 @@ public class Server implements Runnable {
 			return "text/html";
 		else
 			return "text/plain";
+	}
+
+	private void sendResponse(BufferedOutputStream dataOut, PrintWriter headerOut, String response) throws IOException {
+		byte[] outputData = response.getBytes();
+		dataOut = new BufferedOutputStream(client.getOutputStream());
+		headerOut = new PrintWriter(client.getOutputStream());
+		headerOut.print("HTTP/1.1 200 OK\r\n");// you need to use \r\n instead of a println or else it crashes
+		headerOut.print("Server: Fantasy XC Server : 1.0\r\n");
+		headerOut.print("Date: " + new Date() + "\r\n");
+		headerOut.print("Content-type: " + "text" + "\r\n");
+		headerOut.print("Content-length: " + response.length() + "\r\n");
+		headerOut.print("Connection: close\r\n"); // Will close stream
+		headerOut.print("\r\n"); // blank line between headers and content, very important !
+		headerOut.flush(); // flush character output stream buffer
+		dataOut.write(outputData, 0, outputData.length);
+		dataOut.flush();
 	}
 
 }
