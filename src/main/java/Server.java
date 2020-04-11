@@ -66,7 +66,7 @@ public class Server implements Runnable {
 					if (contentLength == -1 && lastLine.substring(0, 9).equals("Content-L"))
 						contentLength = Integer.parseInt(lastLine.substring(16));
 					if (contentType == null && lastLine.substring(0, 9).equals("Content-T"))
-						contentType = lastLine.substring(15);
+						contentType = lastLine.substring(14);
 					if (lastLine.length() == 0)
 						break;
 				}
@@ -75,10 +75,10 @@ public class Server implements Runnable {
 					body += (char) in.read();
 				}
 				System.out.println("body:" + body);
-				if()
+				JSONObject obj = parseBody(body,contentType);
+				System.out.println(obj.get("pass"));
 				String response = "this is the response";
 				sendResponse(dataOut, headerOut, response);
-				System.out.println("finished while loop?");
 			}
 
 		} catch (IOException e) {
@@ -138,6 +138,20 @@ public class Server implements Runnable {
 		headerOut.flush(); // flush character output stream buffer
 		dataOut.write(outputData, 0, outputData.length);
 		dataOut.flush();
+	}
+	
+	private JSONObject parseBody(String body, String contentType) {
+		if(contentType.equals("application/x-www-form-urlencoded")) {
+			JSONObject obj = new JSONObject();
+			String[] pairs = body.split("&");
+			for(String pair: pairs) {
+				int separator = pair.indexOf('=');
+				System.out.println(pair.substring(0,separator)+"|"+pair.substring(separator+1));
+				obj.append(pair.substring(0,separator),pair.substring(separator+1));
+			}
+			return obj;
+		}
+		return null;
 	}
 
 }
