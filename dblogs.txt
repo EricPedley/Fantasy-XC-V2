@@ -1,0 +1,3 @@
+TODO: change code so that it appends instead of overwrites
+
+INSERT INTO users VALUES("firstuser","firstpassword"); | Sun Apr 12 22:08:44 PDT 2020
