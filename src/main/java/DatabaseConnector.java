@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
-public class DatabaseConnector {//TODO: add try/catch to both methods instead of throws
-	public void executeUpdate(String statement) throws SQLException, ClassNotFoundException {
+public class DatabaseConnector {
+	public void executeUpdate(String statement) {
 		Connection c = null;
 		Statement s = null;
 		try {
@@ -22,9 +22,20 @@ public class DatabaseConnector {//TODO: add try/catch to both methods instead of
 			s = c.createStatement();
 			s.executeUpdate(statement);
 			c.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
-			s.close();
-			c.close();
+			try {
+				s.close();
+				c.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			try {
 				FileWriter f = new FileWriter("dblogs.txt");
 				f.append(statement + " | " + (new Date()) + "\n");
@@ -37,7 +48,7 @@ public class DatabaseConnector {//TODO: add try/catch to both methods instead of
 
 	}
 
-	public ResultSet executeQuery(String statement) throws SQLException, ClassNotFoundException {
+	public String executeQuery(String statement)  {
 		Connection c = null;
 		Statement s = null;
 		try {
@@ -47,18 +58,38 @@ public class DatabaseConnector {//TODO: add try/catch to both methods instead of
 					"226d5952c81905ab5d6e176ac53e686d7fa41d25aece4f631cdebe78855a6dc8");
 			c.setAutoCommit(false);
 			s = c.createStatement();
-			return s.executeQuery(statement);
-		} finally {
-			s.close();
-			c.close();
-			try {
-				FileWriter f = new FileWriter("dblogs.txt");
-				f.append(statement + " | " + (new Date()) + "\n");
-				f.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+			ResultSet results = s.executeQuery(statement);
+			String result = "results was empty";
+			if(results.next()) {
+				result = results.getString(1);
 			}
-			System.out.println("finished database operation(might not have been successful as this println is in the finally clause");
+			results.close();
+			System.out.println("database accessed successfully");
+			return result;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+				try {
+					c.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				// TODO Auto-generated catch block
+				FileWriter f;
+				try {
+					f = new FileWriter("dblogs.txt");
+					f.append(statement + " | " + (new Date()) + "\n");
+					f.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		}
+		return "there was an error accessing the database";
 	}
 }

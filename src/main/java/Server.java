@@ -76,11 +76,10 @@ public class Server implements Runnable {
 				}
 				System.out.println("body:" + body);
 				JSONObject bodyObj = parseBody(body,contentType);
+				String response = "data was not form type";
 				if(contentType.equals("application/x-www-form-urlencoded")) {//if the data is from a form
-					new FormHandler().handleForm(bodyObj);
+					response = new FormHandler().handleForm(bodyObj);
 				}
-				System.out.println(bodyObj.get("pass"));
-				String response = "this is the response";
 				sendResponse(dataOut, headerOut, response);
 			}
 
