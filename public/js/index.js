@@ -28,6 +28,12 @@ function POST(data) {
     
 }
 
+function loadSignup() {
+  let login = document.querySelector('#login');
+  ReactDOM.unmountComponentAtNode(login);
+  ReactDOM.render(e(Signup), login);
+}
+
 
 const domContainer = document.querySelector('#login');
 ReactDOM.render(e(Login), domContainer);
