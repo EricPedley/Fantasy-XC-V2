@@ -12,7 +12,7 @@ public class FormHandler {
 		System.out.println("type: " + type);
 		if (type == 0) {// form is login
 			// first user: (user: joe, pass: who)
-			String query = String.format("SELECT username FROM users WHERE username='%s' AND password='%s'",
+			String query = String.format("SELECT userID,password FROM users WHERE username='%s' AND password='%s'",
 					((JSONArray) data.get("user")).getString(0), ((JSONArray) data.get("pass")).getString(0));
 
 			DatabaseConnector db = new DatabaseConnector();
@@ -21,7 +21,7 @@ public class FormHandler {
 			if (result.equals("results was empty")) {
 				return "sorry, could not find this combo of username and password";
 			}
-			return "user found, username: " + result;
+			return "user found, result of query: " + result;
 
 		} else if (type == 1) {// form is signup
 			String statement = String.format("INSERT INTO users VALUES(DEFAULT,'%s','%s');",
