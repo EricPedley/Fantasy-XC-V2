@@ -37,7 +37,7 @@ public class DatabaseConnector {
 				e1.printStackTrace();
 			}
 			try {
-				FileWriter f = new FileWriter("dblogs.txt");
+				FileWriter f = new FileWriter("dblogs.txt",true);
 				f.append(statement + " | " + (new Date()) + "\n");
 				f.close();
 			} catch (IOException e) {
@@ -82,7 +82,7 @@ public class DatabaseConnector {
 				// TODO Auto-generated catch block
 				FileWriter f;
 				try {
-					f = new FileWriter("dblogs.txt");
+					f = new FileWriter("dblogs.txt",true);
 					f.append(statement + " | " + (new Date()) + "\n");
 					f.close();
 				} catch (IOException e) {
