@@ -1,1 +1,10 @@
-SELECT username FROM users WHERE username='john' AND password='doe' | Sun Apr 12 23:33:48 PDT 2020
+CREATE TABLE users2 (userID SERIAL PRIMARY KEY, username TEXT, password TEXT); | Mon Apr 13 15:04:24 PDT 2020
+CREATE TABLE users2 (userID SERIAL PRIMARY KEY, username TEXT, password TEXT); | Mon Apr 13 15:05:18 PDT 2020
+SELECT username FROM users WHERE username='a' AND password='b' | Wed Apr 15 21:13:08 PDT 2020
+SELECT username FROM users WHERE username='a' AND password='b' | Wed Apr 15 21:19:06 PDT 2020
+SELECT username FROM users WHERE username='a' AND password='b' | Wed Apr 15 21:20:22 PDT 2020
+SELECT username FROM users WHERE username='a' AND password='b' | Wed Apr 15 21:24:33 PDT 2020
+SELECT username FROM users WHERE username='a' AND password='b' | Wed Apr 15 21:47:21 PDT 2020
+SELECT username FROM users WHERE username='a' AND password='b' | Wed Apr 15 21:48:18 PDT 2020
+SELECT username FROM users WHERE username='a' AND password='b' | Wed Apr 15 21:48:37 PDT 2020
+SELECT username FROM users WHERE username='a' AND password='b' | Wed Apr 15 21:49:59 PDT 2020
