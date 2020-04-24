@@ -62,5 +62,7 @@ function overrideForms() {
 window.onload = function () {
   overrideForms();
 }
-const domContainer = document.querySelector('#login');
-ReactDOM.render(e(Login), domContainer);
+const loginContainer = document.querySelector('#login');
+const navContainer = document.querySelector('#navbar');
+ReactDOM.render(e(Login), loginContainer);
+ReactDOM.render(e(Navbar), navContainer);
