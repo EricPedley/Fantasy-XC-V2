@@ -1,0 +1,24 @@
+function loadTeam() {
+    console.log("load team event");
+    ReactDOM.unmountComponentAtNode(content);
+    ReactDOM.render(e(TeamView),content);
+}
+class Navbar extends React.Component {
+    render() {
+        return (
+            <nav className="navbar navbar-expand-lg navbar-light row" style={{ backgroundColor: "cyan" }}>
+                <div className="navbar-brand" href="#">Fantasy XC</div>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">
+                        <a className="nav-item nav-link" href="#Team" onClick = {loadTeam}>My Team</a>
+                        <a className="nav-item nav-link" href="#">Trades</a>
+                    </ul>
+                </div>
+            </nav>
+        )
+    }
+}
