@@ -21,7 +21,7 @@ public class FormHandler {
 			if (result.equals("results was empty")) {
 				return "sorry, could not find this combo of username and password";
 			}
-			return "user found, result of query: " + result;
+			return result;
 
 		} else if (type == 1) {// form is signup
 			String statement = String.format("INSERT INTO users VALUES(DEFAULT,'%s','%s');",
