@@ -18,6 +18,7 @@ public class FormHandler {
 			DatabaseConnector db = new DatabaseConnector();
 
 			String result = db.executeQuery(query);
+			System.out.println("result of query: "+result);
 			if (result.equals("results was empty")) {
 				return "sorry, could not find this combo of username and password";
 			}

@@ -58,22 +58,9 @@ public class Server implements Runnable {
 				dataOut.flush();
 			} else if (method.equals("POST")) {
 				System.out.println("post request raw:" + rawRequest);
-				String lastLine = null;
-				int contentLength = -1;
-				String contentType =null;
-				while ((lastLine = in.readLine()) != null) {// reads headers
-					System.out.println(lastLine);
-					if (contentLength == -1 && lastLine.substring(0, 9).equals("Content-L"))
-						contentLength = Integer.parseInt(lastLine.substring(16));
-					if (contentType == null && lastLine.substring(0, 9).equals("Content-T"))
-						contentType = lastLine.substring(14);
-					if (lastLine.length() == 0)
-						break;
-				}
-				String body = "";
-				for (int i = 0; i < contentLength; i++) {
-					body += (char) in.read();
-				}
+				String[] bodyAndContentType = readBody(in);
+				String contentType = bodyAndContentType[0];
+				String body = bodyAndContentType[1];
 				System.out.println("body:" + body);
 				JSONObject bodyObj = parseBody(body,contentType);
 				String response = "data was not form type";
@@ -154,6 +141,27 @@ public class Server implements Runnable {
 			return obj;
 		}
 		return null;
+	}
+	
+	private String[] readBody(BufferedReader in) throws NumberFormatException, IOException {
+		String lastLine = null;
+		int contentLength = -1;
+		String contentType = null;
+		while ((lastLine = in.readLine()) != null) {// reads headers
+			System.out.println(lastLine);
+			if (contentLength == -1 && lastLine.substring(0, 9).equals("Content-L"))
+				contentLength = Integer.parseInt(lastLine.substring(16));
+			if (contentType == null && lastLine.substring(0, 9).equals("Content-T"))
+				contentType = lastLine.substring(14);
+			if (lastLine.length() == 0)
+				break;
+		}
+		String body = "";
+		for (int i = 0; i < contentLength; i++) {
+			body += (char) in.read();
+		}
+		String[] result = {contentType,body};
+		return result;
 	}
 
 }
