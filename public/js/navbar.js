@@ -18,13 +18,30 @@ class Navbar extends React.Component {
                         <a className="nav-item nav-link" href="#Waivers" onClick={loadWaivers}>Waivers</a>
                         <a className="nav-item nav-link mr-auto" href="#Trades" onClick={loadTrades}>Trades</a>
                     </div>
-                    <a className="nav-item nav-link" href="#" onClick={loadLogin}>Login</a>
-                    <a className="nav-item nav-link" href="#" onClick={loadSignup}>Sign Up</a>
+                    <div className = "navbar-nav" id = "navAuth">
+                    </div>
                 </div>
             </nav>
         )
     }
 }
+
+class navLogin extends React.Component {
+    render() {
+        if(this.props.loggedIn){
+            return (
+                <div className ="nav-item">Username goes here</div>
+                <a className="nav-item nav-link" href="#">Sign Out</a>
+            );
+        } else {
+            return (
+                <a className="nav-item nav-link" href="#" onClick={loadLogin}>Login</a>
+                <a className="nav-item nav-link" href="#" onClick={loadSignup}>Sign Up</a>
+            );
+        }
+    }
+}
+
 
 
 

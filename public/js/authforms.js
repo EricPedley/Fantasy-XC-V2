@@ -42,7 +42,7 @@ class Signup extends React.Component {
         );
     }
 }
-function overrideForms(login) {
+function overrideForms(login) {//login is a boolean for whether the form is a login for or not
     console.log("overriding form sumbits");
     let form = document.querySelector('.formOverride');
     form.addEventListener("submit", function (event) {
