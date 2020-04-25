@@ -17,16 +17,21 @@ class Navbar extends React.Component {
                         <a className="nav-item nav-link" href="#Team" onClick={loadTeam}>My Team</a>
                         <a className="nav-item nav-link" href="#">Trades</a>
                         <a className="nav-item nav-link" href="#">Waivers</a>
-                        <div className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">League</a>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href="#">My League</a>
-                                <a className="dropdown-item" href="#">New League</a>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </nav>
         )
     }
 }
+
+
+
+//dropdown menu maybe I'll use it later
+{/* <div className="nav-item dropdown">
+<a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">League</a>
+<div className="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a className="dropdown-item" href="#">My League</a>
+    <a className="dropdown-item" href="#">New League</a>
+</div>
+</div> */}
