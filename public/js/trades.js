@@ -1,13 +1,13 @@
 
-function loadWaivers() {
+function loadTrades() {
     ReactDOM.unmountComponentAtNode(content);
-    ReactDOM.render(e(Waivers), content);
+    ReactDOM.render(e(Trades), content);
 }
-class Waivers extends React.Component{
+class Trades extends React.Component{
     render() {
         return (
             <div className="row">
-                Waivers page
+                trades page
             </div>
         );
     }

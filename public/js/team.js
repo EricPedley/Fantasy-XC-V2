@@ -1,3 +1,8 @@
+function loadTeam() {
+    console.log("load team event");
+    ReactDOM.unmountComponentAtNode(content);
+    ReactDOM.render(e(TeamView), content);
+}
 class TeamView extends React.Component {
     render() {
         return (
