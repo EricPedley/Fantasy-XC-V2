@@ -1,7 +1,7 @@
 function loadLogin() {
     ReactDOM.unmountComponentAtNode(content);
     ReactDOM.render(e(Login), content);
-    overrideForms();
+    overrideForms(true);
   }
 class Login extends React.Component {
     render() {
@@ -23,7 +23,7 @@ class Login extends React.Component {
 function loadSignup() {
     ReactDOM.unmountComponentAtNode(content);
     ReactDOM.render(e(Signup), content);
-    overrideForms();
+    overrideForms(false);
   }
 class Signup extends React.Component {
     render() {
@@ -42,7 +42,7 @@ class Signup extends React.Component {
         );
     }
 }
-function overrideForms() {
+function overrideForms(login) {
     console.log("overriding form sumbits");
     let form = document.querySelector('.formOverride');
     form.addEventListener("submit", function (event) {
@@ -53,7 +53,10 @@ function overrideForms() {
       console.log(event);
       request.onreadystatechange = function () {
         if (request.readyState == XMLHttpRequest.DONE) {
-         localStorage.setItem('id',request.responseText);
+            if(login)
+                localStorage.setItem('id',request.responseText);
+            else
+                console.log("response for signup:" + request.responseText);
         }
       }
       request.open("POST", window.location.href);
