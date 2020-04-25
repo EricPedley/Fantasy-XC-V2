@@ -2,48 +2,13 @@
 
 const content = document.querySelector('#content');
 const e = React.createElement;
-var id = -1;
-function loadSignup() {
-  ReactDOM.unmountComponentAtNode(content);
-  ReactDOM.render(e(Signup), content);
+if(!localStorage.getItem('id')) {
+    localStorage.setItem('id',-1);
 }
 
-function overrideForms() {
-  console.log("overriding form sumbits");
-  let form = document.querySelector('.formOverride');
-  form.addEventListener("submit", function (event) {
-    let formData = new FormData(form);
-    let request = new XMLHttpRequest();
-    request.setRequestHeader
-    event.preventDefault();
-    console.log(event);
-    request.onreadystatechange = function () {
-      if (request.readyState == XMLHttpRequest.DONE) {
-       id = responseText;
-      }
-    }
-    request.open("POST", window.location.href);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    let entries = [];
-    for (let pair of formData.entries()) {
-      entries.push(`${pair[0]}=${pair[1]}`);
-    }
-    let data = entries.join('&').replace(/%20/g, '+');
-    request.send(data);
-  });
-}
 
-window.onload = function () {
-  overrideForms();
-}
-
-const navContainer = document.querySelector('#navbar');
-ReactDOM.render(e(Login), content);
-ReactDOM.render(e(Navbar), navContainer);
-
-
-
-
+loadNavbar();
+loadTeam();
 
 
 

@@ -1,4 +1,8 @@
+function loadNavbar() {
+    const navContainer = document.querySelector('#navbar');
+    ReactDOM.render(e(Navbar), navContainer);
 
+}
 class Navbar extends React.Component {
     render() {
         return (
@@ -12,9 +16,10 @@ class Navbar extends React.Component {
                     <div className="navbar-nav mr-auto">
                         <a className="nav-item nav-link" href="#Team" onClick={loadTeam}>My Team</a>
                         <a className="nav-item nav-link" href="#Waivers" onClick={loadWaivers}>Waivers</a>
-                        <a className="nav-item nav-link" href="#Trades" onClick={loadTrades}>Trades</a>
-                       
+                        <a className="nav-item nav-link mr-auto" href="#Trades" onClick={loadTrades}>Trades</a>
                     </div>
+                    <a className="nav-item nav-link" href="#" onClick={loadLogin}>Login</a>
+                    <a className="nav-item nav-link" href="#" onClick={loadSignup}>Sign Up</a>
                 </div>
             </nav>
         )

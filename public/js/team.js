@@ -1,5 +1,9 @@
 function loadTeam() {
-    console.log("load team event");
+    let id=-1;
+    if((id=localStorage.getItem('id'))) {
+        
+    }
+    console.log("load team event, id is "+id);
     ReactDOM.unmountComponentAtNode(content);
     ReactDOM.render(e(TeamView), content);
 }

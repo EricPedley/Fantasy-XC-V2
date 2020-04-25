@@ -1,3 +1,8 @@
+function loadLogin() {
+    ReactDOM.unmountComponentAtNode(content);
+    ReactDOM.render(e(Login), content);
+    overrideForms();
+  }
 class Login extends React.Component {
     render() {
         return (
@@ -15,7 +20,11 @@ class Login extends React.Component {
         );
     }
 }
-
+function loadSignup() {
+    ReactDOM.unmountComponentAtNode(content);
+    ReactDOM.render(e(Signup), content);
+    overrideForms();
+  }
 class Signup extends React.Component {
     render() {
         return (
@@ -33,3 +42,27 @@ class Signup extends React.Component {
         );
     }
 }
+function overrideForms() {
+    console.log("overriding form sumbits");
+    let form = document.querySelector('.formOverride');
+    form.addEventListener("submit", function (event) {
+      let formData = new FormData(form);
+      let request = new XMLHttpRequest();
+      request.setRequestHeader
+      event.preventDefault();
+      console.log(event);
+      request.onreadystatechange = function () {
+        if (request.readyState == XMLHttpRequest.DONE) {
+         localStorage.setItem('id',request.responseText);
+        }
+      }
+      request.open("POST", window.location.href);
+      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      let entries = [];
+      for (let pair of formData.entries()) {
+        entries.push(`${pair[0]}=${pair[1]}`);
+      }
+      let data = entries.join('&').replace(/%20/g, '+');
+      request.send(data);
+    });
+  }
