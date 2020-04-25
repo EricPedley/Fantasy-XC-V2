@@ -2,7 +2,7 @@
 
 const content = document.querySelector('#content');
 const e = React.createElement;
-
+var id = -1;
 function loadSignup() {
   ReactDOM.unmountComponentAtNode(content);
   ReactDOM.render(e(Signup), content);
@@ -19,7 +19,7 @@ function overrideForms() {
     console.log(event);
     request.onreadystatechange = function () {
       if (request.readyState == XMLHttpRequest.DONE) {
-        console.log(request.responseText);
+       id = responseText;
       }
     }
     request.open("POST", window.location.href);

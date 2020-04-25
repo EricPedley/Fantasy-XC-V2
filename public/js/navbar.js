@@ -1,7 +1,7 @@
 function loadTeam() {
     console.log("load team event");
     ReactDOM.unmountComponentAtNode(content);
-    ReactDOM.render(e(TeamView),content);
+    ReactDOM.render(e(TeamView), content);
 }
 class Navbar extends React.Component {
     render() {
@@ -13,10 +13,18 @@ class Navbar extends React.Component {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                        <a className="nav-item nav-link" href="#Team" onClick = {loadTeam}>My Team</a>
+                    <div className="navbar-nav mr-auto">
+                        <a className="nav-item nav-link" href="#Team" onClick={loadTeam}>My Team</a>
                         <a className="nav-item nav-link" href="#">Trades</a>
-                    </ul>
+                        <a className="nav-item nav-link" href="#">Waivers</a>
+                        <div className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">League</a>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a className="dropdown-item" href="#">My League</a>
+                                <a className="dropdown-item" href="#">New League</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </nav>
         )
