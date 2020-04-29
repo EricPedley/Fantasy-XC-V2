@@ -2,13 +2,18 @@
 
 const content = document.querySelector('#content');
 const e = React.createElement;
-if(!localStorage.getItem('id')) {
-    localStorage.setItem('id',-1);
+loadNavbar();
+if (!localStorage.getItem('id')) {//if not logged in
+    localStorage.setItem('id', -1);
+} else {
+    if (localStorage.getItem('id') == -1)
+        loadNavLogin();
+    else
+        loadNavSignout();
 }
 
-
-loadNavbar();
 loadTeam();
+
 
 
 

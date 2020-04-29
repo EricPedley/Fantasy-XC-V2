@@ -18,3 +18,13 @@ SELECT userID,password FROM users WHERE username='joe' AND password='who' | Sat 
 SELECT userID,password FROM users WHERE username='joe' AND password='who' | Sat Apr 25 15:52:18 PDT 2020
 SELECT userID,password FROM users WHERE username='joe' AND password='who' | Sat Apr 25 15:58:22 PDT 2020
 SELECT userID,password FROM users WHERE username='joe' AND password='who' | Sat Apr 25 15:59:01 PDT 2020
+INSERT INTO users VALUES(DEFAULT,'jose','madre'); | Sat Apr 25 20:51:42 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Sat Apr 25 20:51:53 PDT 2020
+CREATE TABLE rosters (userID INTEGER PRIMARY KEY, r1 INTEGER, r2 INTEGER, r3 INTEGER, r4 INTEGER, r5 INTEGER, r6 INTEGER, r7 INTEGER); | Sat Apr 25 20:56:32 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Apr 29 10:46:28 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Apr 29 10:47:20 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Apr 29 10:48:09 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Apr 29 10:49:12 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Apr 29 10:50:27 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Apr 29 10:55:54 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Apr 29 10:56:32 PDT 2020

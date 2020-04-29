@@ -2,7 +2,7 @@ function loadLogin() {
     ReactDOM.unmountComponentAtNode(content);
     ReactDOM.render(e(Login), content);
     overrideForms(true);
-  }
+}
 class Login extends React.Component {
     render() {
         return (
@@ -24,7 +24,7 @@ function loadSignup() {
     ReactDOM.unmountComponentAtNode(content);
     ReactDOM.render(e(Signup), content);
     overrideForms(false);
-  }
+}
 class Signup extends React.Component {
     render() {
         return (
@@ -45,27 +45,38 @@ class Signup extends React.Component {
 function overrideForms(login) {//login is a boolean for whether the form is a login for or not
     console.log("overriding form sumbits");
     let form = document.querySelector('.formOverride');
-    form.addEventListener("submit", function (event) {
-      let formData = new FormData(form);
-      let request = new XMLHttpRequest();
-      request.setRequestHeader
-      event.preventDefault();
-      console.log(event);
-      request.onreadystatechange = function () {
+    form.addEventListener("submit", customSubmit);
+}
+
+function customSubmit(event) {
+    let form = document.querySelector('.formOverride');
+    let formData = new FormData(form);
+    let user = formData.get("user");
+    let request = new XMLHttpRequest();
+    request.setRequestHeader
+    event.preventDefault();
+    console.log(event);
+    request.onreadystatechange = function () {
         if (request.readyState == XMLHttpRequest.DONE) {
-            if(login)
-                localStorage.setItem('id',request.responseText);
-            else
+            if (login) {
+               onLogin(request.responseText,user);
+            } else
                 console.log("response for signup:" + request.responseText);
         }
-      }
-      request.open("POST", window.location.href);
-      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      let entries = [];
-      for (let pair of formData.entries()) {
+    }
+    request.open("POST", window.location.href);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    let entries = [];
+    for (let pair of formData.entries()) {
         entries.push(`${pair[0]}=${pair[1]}`);
-      }
-      let data = entries.join('&').replace(/%20/g, '+');
-      request.send(data);
-    });
-  }
+    }
+    let data = entries.join('&').replace(/%20/g, '+');
+    request.send(data);
+}
+
+function onLogin(id, user) {//runs on successful login
+    localStorage.setItem('id', id);
+    localStorage.setItem('user',user);
+    loadNavSignout();
+    loadTeam();
+}

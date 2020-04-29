@@ -18,24 +18,48 @@ class Navbar extends React.Component {
                         <a className="nav-item nav-link" href="#Waivers" onClick={loadWaivers}>Waivers</a>
                         <a className="nav-item nav-link mr-auto" href="#Trades" onClick={loadTrades}>Trades</a>
                     </div>
-                    <div className = "navbar-nav" id = "navAuth">
-                    <a className="nav-item nav-link" href="#" onClick={loadLogin}>Login</a>
-                    <a className="nav-item nav-link" href="#" onClick={loadSignup}>Sign Up</a>
-                    </div>
+                    <div id="navAuth"></div>
                 </div>
             </nav>
         )
     }
 }
 
-class navLogin extends React.Component{
-
+function loadNavLogin() {
+    let navAuth = document.querySelector("#navAuth");
+    ReactDOM.unmountComponentAtNode(navAuth);
+    ReactDOM.render(e(navLogin), navAuth);
 }
-
-class navLogout extends React.Component{
-    
+class navLogin extends React.Component {
+    render() {
+        return (
+            <div  className="navbar-nav">
+                <a className="nav-item nav-link" href="#" onClick={loadLogin}>Login</a>
+                <a className="nav-item nav-link" href="#" onClick={loadSignup}>Sign Up</a>
+            </div>
+        );
+    }
 }
-
+function loadNavSignout() {
+    let navAuth = document.querySelector("#navAuth");
+    ReactDOM.unmountComponentAtNode(navAuth);
+    ReactDOM.render(e(navSignout), navAuth);
+}
+class navSignout extends React.Component {
+    render() {
+        return (
+            <div className="navbar-nav">
+                <div className="nav-item nav-link">Hello, {localStorage.getItem('user')}</div>
+                <a className="nav-item nav-link" href="#" onClick={signOut}>Sign Out</a>
+            </div>
+        );
+    }
+}
+function signOut() {
+    localStorage.setItem('id', -1);
+    localStorage.removeItem('user');
+    loadNavLogin();
+}
 
 
 
