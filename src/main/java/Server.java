@@ -37,7 +37,12 @@ public class Server implements Runnable {
 			String[] request = rawRequest.split(" ");
 			String method = request[0];
 			String resource = request[1];
-
+			if(!(resource.length()==0||resource.contains("."))) {//this means that it's a request to an endpoint
+				String[] bodyAndContentType = readBody(in);
+				String response = new EndpointHandler().handle(method, resource, parseBody(bodyAndContentType[0],bodyAndContentType[1]));
+				sendResponse(dataOut,headerOut,response);
+				
+			}
 			if (method.equals("GET")) {
 				if (resource.endsWith("/")) {
 					resource += "index.html";
@@ -58,6 +63,7 @@ public class Server implements Runnable {
 				dataOut.flush();
 			} else if (method.equals("POST")) {
 				System.out.println("post request raw:" + rawRequest);
+				
 				String[] bodyAndContentType = readBody(in);
 				String contentType = bodyAndContentType[0];
 				String body = bodyAndContentType[1];
@@ -67,7 +73,7 @@ public class Server implements Runnable {
 				if(contentType.equals("application/x-www-form-urlencoded")) {//if the data is from a form
 					response = new FormHandler().handleForm(bodyObj);
 				}
-				sendResponse(dataOut, headerOut, response);
+				sendResponse(dataOut, headerOut, response);//this handles writing all the headers and writing response
 			}
 
 		} catch (IOException e) {
@@ -139,6 +145,8 @@ public class Server implements Runnable {
 				obj.append(pair.substring(0,separator),pair.substring(separator+1));
 			}
 			return obj;
+		} else if(contentType.equals("application/json")) {
+			return new JSONObject(body);
 		}
 		return null;
 	}
