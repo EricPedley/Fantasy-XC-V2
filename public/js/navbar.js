@@ -2,6 +2,10 @@ function loadNavbar() {
     const navContainer = document.querySelector('#navbar');
     ReactDOM.render(e(Navbar), navContainer);
 }
+function L(event,loadFunction) {
+    event.preventDefault();
+    loadFunction();
+}
 class Navbar extends React.Component {
     render() {
         return (
@@ -13,9 +17,9 @@ class Navbar extends React.Component {
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <div className="navbar-nav mr-auto">
-                        <a className="nav-item nav-link" href="#Team" onClick={loadTeam}>My Team</a>
-                        <a className="nav-item nav-link" href="#Waivers" onClick={loadWaivers}>Waivers</a>
-                        <a className="nav-item nav-link mr-auto" href="#Trades" onClick={loadTrades}>Trades</a>
+                        <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadTeam();}}>My Team</a>
+                        <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadWaivers();}}>Waivers</a>
+                        <a className="nav-item nav-link mr-auto" href="" onClick={(event)=>{event.preventDefault();loadTrades();}}>Trades</a>
                     </div>
                     <div id="navAuth"></div>
                 </div>
