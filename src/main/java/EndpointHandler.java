@@ -14,12 +14,26 @@ public class EndpointHandler {
 	
 	public String handle(String method, String endpoint, JSONObject request) {
 		try {
-			Class cl = Class.forName(endpoint);
+			int separator = endpoint.indexOf("?");
+			//if there isn't a question mark it uses endpoint, if there is one it uses the part of endpoint before the ?
+			Class cl = Class.forName("main.java.endpoints."+((separator==-1)?endpoint:endpoint.substring(0,separator)));
 			Constructor co = cl.getConstructor();
 			Endpoint e = (Endpoint)co.newInstance();
-			if(method.equals("POST"))
+			if(method.equals("POST")) {
 				return e.handlePOST(request);
-			else
+			} else if(method.equals("GET")) {
+				if(separator!=-1) {
+					String[] paramPairs = endpoint.substring((separator+1)).split("&");
+					JSONObject params = new JSONObject();
+					for(String pair: paramPairs) {
+						String[] keyVal = pair.split("=");//example: "foo=bar" would be {foo,bar}
+						params.put(keyVal[0], keyVal[1]);
+					}
+					return e.handleGET(params);
+				} else {
+					return e.handleGET(null);
+				}
+			} else
 				return "method for endpoint request was not post, not implemented on server yet";
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();

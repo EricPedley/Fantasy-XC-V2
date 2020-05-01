@@ -5,6 +5,7 @@ const e = React.createElement;
 loadNavbar();
 if (!localStorage.getItem('id')) {//if not logged in
     localStorage.setItem('id', -1);
+    loadNavLogin();
 } else {
     if (localStorage.getItem('id') == -1)
         loadNavLogin();

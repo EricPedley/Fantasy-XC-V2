@@ -29,21 +29,23 @@ public class Server implements Runnable {
 		PrintWriter headerOut = null;// output stream for head of response
 		try {
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			String rawRequest = in.readLine();// first line of request
-			if (rawRequest == null) {
+			String firstLine = in.readLine();// first line of request
+			if (firstLine == null) {
 				System.out.println("null request, terminating thread");
 				return;
 			}
-			String[] request = rawRequest.split(" ");
+			System.out.println("request first line: "+firstLine);
+			String[] request = firstLine.split(" ");
 			String method = request[0];
 			String resource = request[1];
-			if(!(resource.length()==0||resource.contains("."))) {//this means that it's a request to an endpoint
+			if (!(resource.length() == 1 || resource.contains("."))) {// this means that it's a request to an endpoint.
+																		// ex: http://fantasyxc.com/Rosters
 				String[] bodyAndContentType = readBody(in);
-				String response = new EndpointHandler().handle(method, resource, parseBody(bodyAndContentType[0],bodyAndContentType[1]));
-				sendResponse(dataOut,headerOut,response);
-				
-			}
-			if (method.equals("GET")) {
+				String response = new EndpointHandler().handle(method, resource.substring(1),
+						parseBody(bodyAndContentType[0], bodyAndContentType[1]));
+				sendResponse(dataOut, headerOut, response);
+
+			} else if (method.equals("GET")) {
 				if (resource.endsWith("/")) {
 					resource += "index.html";
 				}
@@ -62,18 +64,19 @@ public class Server implements Runnable {
 				dataOut.write(outputData, 0, outputData.length);
 				dataOut.flush();
 			} else if (method.equals("POST")) {
-				System.out.println("post request raw:" + rawRequest);
-				
+				System.out.println("post request first line:" + firstLine);
+
 				String[] bodyAndContentType = readBody(in);
 				String contentType = bodyAndContentType[0];
 				String body = bodyAndContentType[1];
 				System.out.println("body:" + body);
-				JSONObject bodyObj = parseBody(body,contentType);
-				String response = "data was not form type";
-				if(contentType.equals("application/x-www-form-urlencoded")) {//if the data is from a form
+				JSONObject bodyObj = parseBody(body, contentType);
+				String response = "data was not form type(line 71 Server.java)";
+				System.out.println("content-type:" + contentType);
+				if (contentType.equals("application/x-www-form-urlencoded")) {// if the data is from a form
 					response = new FormHandler().handleForm(bodyObj);
 				}
-				sendResponse(dataOut, headerOut, response);//this handles writing all the headers and writing response
+				sendResponse(dataOut, headerOut, response);// this handles writing all the headers and writing response
 			}
 
 		} catch (IOException e) {
@@ -134,41 +137,46 @@ public class Server implements Runnable {
 		dataOut.write(outputData, 0, outputData.length);
 		dataOut.flush();
 	}
-	
+
 	private JSONObject parseBody(String body, String contentType) {
-		if(contentType.equals("application/x-www-form-urlencoded")) {
+		if (contentType.equals("application/x-www-form-urlencoded")) {
 			JSONObject obj = new JSONObject();
 			String[] pairs = body.split("&");
-			for(String pair: pairs) {
+			for (String pair : pairs) {
 				int separator = pair.indexOf('=');
-				System.out.println(pair.substring(0,separator)+"|"+pair.substring(separator+1));
-				obj.append(pair.substring(0,separator),pair.substring(separator+1));
+				System.out.println("(server ln 144)pair: " + pair);
+				System.out.println(pair.substring(0, separator) + "|" + pair.substring(separator + 1));
+				obj.append(pair.substring(0, separator), pair.substring(separator + 1));
 			}
 			return obj;
-		} else if(contentType.equals("application/json")) {
+		} else if (contentType.equals("application/json")) {
 			return new JSONObject(body);
 		}
 		return null;
 	}
-	
+
 	private String[] readBody(BufferedReader in) throws NumberFormatException, IOException {
 		String lastLine = null;
 		int contentLength = -1;
 		String contentType = null;
 		while ((lastLine = in.readLine()) != null) {// reads headers
 			System.out.println(lastLine);
-			if (contentLength == -1 && lastLine.substring(0, 9).equals("Content-L"))
-				contentLength = Integer.parseInt(lastLine.substring(16));
-			if (contentType == null && lastLine.substring(0, 9).equals("Content-T"))
-				contentType = lastLine.substring(14);
+			if (lastLine.length() > 9) {
+				if (contentLength == -1 && lastLine.substring(0, 9).equals("Content-L"))
+					contentLength = Integer.parseInt(lastLine.substring(16));
+				if (contentType == null && lastLine.substring(0, 9).equals("Content-T"))
+					contentType = lastLine.substring(14);
+			}
 			if (lastLine.length() == 0)
 				break;
+
 		}
 		String body = "";
 		for (int i = 0; i < contentLength; i++) {
+			System.out.println("reading characters");
 			body += (char) in.read();
 		}
-		String[] result = {contentType,body};
+		String[] result = { contentType, body };
 		return result;
 	}
 

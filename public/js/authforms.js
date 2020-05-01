@@ -53,12 +53,12 @@ function customSubmit(event) {
     let formData = new FormData(form);
     let user = formData.get("user");
     let request = new XMLHttpRequest();
-    request.setRequestHeader
     event.preventDefault();
     console.log(event);
     request.onreadystatechange = function () {
         if (request.readyState == XMLHttpRequest.DONE) {
-            if (login) {
+            //TODO: make server send a state besides done if there's an error, because rn it just returns a response but says it's done
+            if (login) {//login is provided in the overrideForms method that calls this method. js is strange.
                onLogin(request.responseText,user);
             } else
                 console.log("response for signup:" + request.responseText);

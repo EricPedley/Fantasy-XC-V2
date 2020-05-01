@@ -4,7 +4,9 @@ import org.json.JSONObject;
 
 public class Rosters implements Endpoint {
 
-	public void handleGET() {
+	public String handleGET(JSONObject params) {
+		System.out.println(params);
+		return "this is the response for rosters get, not fully implemented yet";
 		// TODO Auto-generated method stub
 		
 	}

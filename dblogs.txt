@@ -31,3 +31,4 @@ SELECT userID,password FROM users WHERE username='jose' AND password='madre' | W
 SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Apr 29 11:08:04 PDT 2020
 SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Apr 29 11:34:46 PDT 2020
 SELECT userID,password FROM users WHERE username='joe' AND password='who' | Wed Apr 29 11:40:02 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Fri May 01 14:09:35 PDT 2020

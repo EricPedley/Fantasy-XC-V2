@@ -1,7 +1,6 @@
 function loadNavbar() {
     const navContainer = document.querySelector('#navbar');
     ReactDOM.render(e(Navbar), navContainer);
-
 }
 class Navbar extends React.Component {
     render() {
