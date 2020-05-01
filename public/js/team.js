@@ -1,7 +1,7 @@
 function loadTeam() {
     let id=-1;
     if((id=localStorage.getItem('id'))) {
-        
+        getRoster(id);
     }
     console.log("load team event, id is "+id);
     ReactDOM.unmountComponentAtNode(content);
@@ -23,17 +23,19 @@ class TeamView extends React.Component {
     }
 }
 
-function testGET() {
+function getRoster(id) {
+    console.log("getting roster");
     let request = new XMLHttpRequest();
-    let target = window.location.href.substring(0,window.location.href.indexOf("#"))+"Rosters?foo=bar&id=3";
+    let target = window.location.href.substring(0,window.location.href.indexOf("#"))+`Rosters?id=${id}&meetID=${1}`;//TODO make meet ID dynamic
     request.open("GET",target);
-    console.log("target: " + target);
-    request.setRequestHeader("Content-Type","text/plain");
-    request.onreadystatechange = function () {
-        if (request.readyState == XMLHttpRequest.DONE) {
+    request.onreadystatechange = function() {
+        if(request.readyState==XMLHttpRequest.DONE) {
             console.log(request.responseText);
-        }
+            return request.responseText;//this return statement never runs b/c of async stuff, need to use a promise or something
     }
-    request.send("an empty body breaks this somehow");
-    
+    request.setRequestHeader("Content-Type","text/plain");
+    request.send("it won't work without body text for some reason");
+}
+
+function testGET() {
 }
