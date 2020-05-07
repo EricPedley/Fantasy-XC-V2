@@ -7,10 +7,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class DatabaseConnector {
-	public void executeUpdate(String statement) {
+	public static void executeUpdate(String statement) {
 		Connection c = null;
 		Statement s = null;
 		try {
@@ -37,18 +38,21 @@ public class DatabaseConnector {
 				e1.printStackTrace();
 			}
 			try {
-				FileWriter f = new FileWriter("dblogs.txt",true);
-				f.append(statement + " | " + (new Date()) + "\n");
+				FileWriter f = new FileWriter("dblogs.txt", true);// this only works for local testing
+				String loggingOutput = statement + " | " + (new Date()) + "\n";
+				System.out.println(loggingOutput);
+				f.append(loggingOutput);
 				f.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			System.out.println("finished database operation(might not have been successful as this println is in the finally clause");
+			System.out.println(
+					"finished database operation(might not have been successful as this println is in the finally clause");
 		}
 
 	}
 
-	public String executeQuery(String statement)  {
+	public static ArrayList<String> executeQuery(String statement) {
 		Connection c = null;
 		Statement s = null;
 		try {
@@ -59,9 +63,18 @@ public class DatabaseConnector {
 			c.setAutoCommit(false);
 			s = c.createStatement();
 			ResultSet results = s.executeQuery(statement);
-			String result = "results was empty";
-			if(results.next()) {
-				result = results.getString(1);
+			int numCols = 0;
+			int i =0;
+			String start = statement.substring(0,statement.indexOf("FROM"));
+			while(i!=-1) {
+				i=start.indexOf(",",i+1);
+				numCols++;
+			}
+			ArrayList<String> result = new ArrayList<String>();
+			if (results.next()) {
+				for(int col=0;col<numCols;col++) {
+					result.add(results.getString(col + 1));
+				}
 			}
 			results.close();
 			System.out.println("database accessed successfully");
@@ -73,23 +86,23 @@ public class DatabaseConnector {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-				try {
-					c.close();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+			try {
+				c.close();
+			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				FileWriter f;
-				try {
-					f = new FileWriter("dblogs.txt",true);
-					f.append(statement + " | " + (new Date()) + "\n");
-					f.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				e1.printStackTrace();
+			}
+			// TODO Auto-generated catch block
+			FileWriter f;
+			try {
+				f = new FileWriter("dblogs.txt", true);
+				f.append(statement + " | " + (new Date()) + "\n");
+				f.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		return "there was an error accessing the database";
+		return null;
 	}
 }

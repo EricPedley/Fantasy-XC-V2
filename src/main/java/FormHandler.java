@@ -1,8 +1,5 @@
 package main.java;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,10 +11,7 @@ public class FormHandler {
 			// first user: (user: joe, pass: who)
 			String query = String.format("SELECT userID,password FROM users WHERE username='%s' AND password='%s'",
 					((JSONArray) data.get("user")).getString(0), ((JSONArray) data.get("pass")).getString(0));
-
-			DatabaseConnector db = new DatabaseConnector();
-
-			String result = db.executeQuery(query);
+			String result = DatabaseConnector.executeQuery(query).get(0);
 			System.out.println("result of query: "+result);
 			if (result.equals("results was empty")) {
 				return "sorry, could not find this combo of username and password";
@@ -27,9 +21,7 @@ public class FormHandler {
 		} else if (type == 1) {// form is signup
 			String statement = String.format("INSERT INTO users VALUES(DEFAULT,'%s','%s');",
 					((JSONArray) data.get("user")).getString(0), ((JSONArray) data.get("pass")).getString(0));
-			DatabaseConnector db = new DatabaseConnector();
-
-			db.executeUpdate(statement);
+			DatabaseConnector.executeUpdate(statement);
 			return "signup attempted(may or may not have been completed";
 		} else {
 			return "unsupported form type, browser error";

@@ -32,3 +32,24 @@ SELECT userID,password FROM users WHERE username='jose' AND password='madre' | W
 SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Apr 29 11:34:46 PDT 2020
 SELECT userID,password FROM users WHERE username='joe' AND password='who' | Wed Apr 29 11:40:02 PDT 2020
 SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Fri May 01 14:09:35 PDT 2020
+CREATE TABLE rosters (userID INTEGER PRIMARY KEY, r1 INTEGER, r2 INTEGER, r3 INTEGER, r4 INTEGER, r5 INTEGER, r6 INTEGER, r7 INTEGER); | Thu May 07 15:20:36 PDT 2020
+CREATE TABLE rosters (userID INTEGER PRIMARY KEY, r1 INTEGER, r2 INTEGER, r3 INTEGER, r4 INTEGER, r5 INTEGER, r6 INTEGER, r7 INTEGER); | Thu May 07 15:20:36 PDT 2020
+INSERT INTO rosters VALUES(4,1,2,3,4,5,6,7); | Thu May 07 15:25:58 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = "4" | Thu May 07 15:28:32 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = "4" | Thu May 07 15:29:34 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 15:30:24 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 15:38:55 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 15:40:55 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 15:43:22 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 15:43:33 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 15:48:49 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 15:49:43 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 15:50:40 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 15:53:40 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 16:13:06 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 16:16:48 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 16:17:48 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 16:19:12 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 16:19:30 PDT 2020
+SELECT r1,r2,r3,r4,r4,r6,r7 FROM rosters where userID = 4 | Thu May 07 16:19:54 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Thu May 07 16:20:28 PDT 2020
