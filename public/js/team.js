@@ -40,13 +40,5 @@ function getRoster(id) {
 
 
 function testGET() {
-    let request = new XMLHttpRequest();
-    let target = "https://www.athletic.net/CrossCountry/School.aspx?SchoolID=1096";
-    request.open("GET", target);
-    request.onreadystatechange = function () {
-        if (request.readyState == XMLHttpRequest.DONE) {
-            console.log(request.responseText);
-        }
-    }
-    request.send();
+    console.log("you pressed the test button, it does nothing right now");
 }
