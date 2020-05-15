@@ -39,9 +39,9 @@ public class DatabaseConnector {
 			}
 			try {
 				FileWriter f = new FileWriter("dblogs.txt", true);// this only works for local testing
-				String loggingOutput = statement + " | " + (new Date()) + "\n";
-				System.out.println(loggingOutput);
-				f.append(loggingOutput);
+				String logData = statement + " | " + (new Date()) + "\n";
+				System.out.println(logData);
+				f.append(logData);
 				f.close();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -97,7 +97,9 @@ public class DatabaseConnector {
 			FileWriter f;
 			try {
 				f = new FileWriter("dblogs.txt", true);
-				f.append(statement + " | " + (new Date()) + "\n");
+				String logData = statement + " | " + (new Date()) + "\n";
+				f.append(logData);
+				System.out.println(logData);
 				f.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
