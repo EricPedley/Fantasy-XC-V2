@@ -62,7 +62,7 @@ public class DatabaseConnector {
 					"226d5952c81905ab5d6e176ac53e686d7fa41d25aece4f631cdebe78855a6dc8");
 			c.setAutoCommit(false);
 			s = c.createStatement();
-			ResultSet results = s.executeQuery(statement);
+			ResultSet resultsSet = s.executeQuery(statement);
 			int numCols = 0;
 			int i =0;
 			String start = statement.substring(0,statement.indexOf("FROM"));
@@ -71,12 +71,13 @@ public class DatabaseConnector {
 				numCols++;
 			}
 			ArrayList<String> result = new ArrayList<String>();
-			if (results.next()) {
+			
+			if (resultsSet.next()) {
 				for(int col=0;col<numCols;col++) {
-					result.add(results.getString(col + 1));
+					result.add(resultsSet.getString(col + 1));
 				}
 			}
-			results.close();
+			resultsSet.close();
 			System.out.println("database accessed successfully");
 			return result;
 		} catch (SQLException e) {
