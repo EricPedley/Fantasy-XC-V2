@@ -134,3 +134,5 @@ SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = -1 | Thu May 14 21:50:58
 SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = -1 | Thu May 14 21:51:26 PDT 2020
 SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = -1 | Thu May 14 21:51:57 PDT 2020
 SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = -1 | Thu May 14 21:52:37 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = -1 | Thu May 14 21:55:26 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = -1 | Thu May 14 21:58:42 PDT 2020

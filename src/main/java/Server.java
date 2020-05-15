@@ -48,15 +48,7 @@ public class Server implements Runnable {
 					resource += "index.html";
 				}
 				File file = new File("public/" + resource);
-				boolean verbose=false;
-				if(resource.contains(".css")) {
-					verbose=true;
-				}
 				String contentType = getContentType(resource);// content type is what type of file
-				if(verbose) {
-					System.out.println(contentType);
-					
-				}
 				byte[] outputData = readFileData(file);// converts file into array of bytes
 				dataOut = new BufferedOutputStream(client.getOutputStream());
 				headerOut = new PrintWriter(client.getOutputStream());
@@ -168,7 +160,6 @@ public class Server implements Runnable {
 		int contentLength = -1;
 		String contentType = null;
 		while ((lastLine = in.readLine()) != null) {// reads headers
-			System.out.println(lastLine);
 			if (lastLine.length() > 9) {
 				if (contentLength == -1 && lastLine.substring(0, 9).equals("Content-L"))
 					contentLength = Integer.parseInt(lastLine.substring(16));
