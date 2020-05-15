@@ -16,6 +16,8 @@ public class Rosters implements Endpoint {
 		for(String s: data) {
 			rosterNums+=s+",";
 		}
+		if(rosterNums.length()<1)
+			return "query returned nothing for athlete ids";
 		rosterNums = "{"+rosterNums.substring(0,rosterNums.length()-1)+"}";
 		return "athlete IDs: "+rosterNums;
 		// TODO Auto-generated method stub

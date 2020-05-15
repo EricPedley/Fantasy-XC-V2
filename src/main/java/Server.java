@@ -48,7 +48,15 @@ public class Server implements Runnable {
 					resource += "index.html";
 				}
 				File file = new File("public/" + resource);
+				boolean verbose=false;
+				if(resource.contains(".css")) {
+					verbose=true;
+				}
 				String contentType = getContentType(resource);// content type is what type of file
+				if(verbose) {
+					System.out.println(contentType);
+					
+				}
 				byte[] outputData = readFileData(file);// converts file into array of bytes
 				dataOut = new BufferedOutputStream(client.getOutputStream());
 				headerOut = new PrintWriter(client.getOutputStream());
@@ -116,6 +124,8 @@ public class Server implements Runnable {
 	private String getContentType(String fileRequested) {
 		if (fileRequested.endsWith(".htm") || fileRequested.endsWith(".html"))
 			return "text/html";
+		else if(fileRequested.endsWith(".css"))
+			return "text/css";
 		else
 			return "text/plain";
 	}
