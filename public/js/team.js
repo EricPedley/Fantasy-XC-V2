@@ -13,13 +13,13 @@ class TeamView extends React.Component {
             <div>
                 <center id = "cards" ><h1>My Team</h1></center>
                 <div className="row" >
-                    <div className="banana">Col 1</div>
-                    <div className="banana">Col 2</div>
-                    <div className="banana">Col 3</div>
-                    <div className="banana">Col 4</div>
-                    <div className="banana">Col 5</div>
-                    <div className="banana">Col 6</div>
-                    <div className="banana">Col 7</div>
+                    <div className="col">Col 1</div>
+                    <div className="col">Col 2</div>
+                    <div className="col">Col 3</div>
+                    <div className="col">Col 4</div>
+                    <div className="col">Col 5</div>
+                    <div className="col">Col 6</div>
+                    <div className="col">Col 7</div>
                 </div>
                 <center><h2>Next Meet</h2></center>
                 <div className="row" style={{ height: "50vh" }}>
