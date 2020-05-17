@@ -19,6 +19,7 @@ class Navbar extends React.Component {
                     <div className="navbar-nav mr-auto">
                         <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadTeam();}}>My Team</a>
                         <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadWaivers();}}>Waivers</a>
+                        <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadLeague();}}>League</a>
                         <a className="nav-item nav-link mr-auto" href="" onClick={(event)=>{event.preventDefault();loadTrades();}}>Trades</a>
                     </div>
                     <div id="navAuth"></div>
@@ -37,8 +38,8 @@ class navLogin extends React.Component {
     render() {
         return (
             <div  className="navbar-nav">
-                <a className="nav-item nav-link" href="#" onClick={loadLogin}>Login</a>
-                <a className="nav-item nav-link" href="#" onClick={loadSignup}>Sign Up</a>
+                <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadLogin();}}>Login</a>
+                <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadSignup();}}>Sign Up</a>
             </div>
         );
     }

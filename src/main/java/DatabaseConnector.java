@@ -52,7 +52,7 @@ public class DatabaseConnector {
 
 	}
 
-	public static ArrayList<String> executeQuery(String statement) {
+	public static ArrayList<ArrayList<String>> executeQuery(String statement) {
 		Connection c = null;
 		Statement s = null;
 		try {
@@ -70,16 +70,18 @@ public class DatabaseConnector {
 				i=start.indexOf(",",i+1);
 				numCols++;
 			}
-			ArrayList<String> result = new ArrayList<String>();
 			
-			if (resultsSet.next()) {
+			ArrayList<ArrayList<String>> resultRowsAndColumns = new ArrayList<ArrayList<String>>();
+			while (resultsSet.next()) {
+				ArrayList<String> resultRow = new ArrayList<String>();
 				for(int col=0;col<numCols;col++) {
-					result.add(resultsSet.getString(col + 1));
+					resultRow.add(resultsSet.getString(col + 1));
 				}
+				resultRowsAndColumns.add(resultRow);
 			}
 			resultsSet.close();
 			System.out.println("database accessed successfully");
-			return result;
+			return resultRowsAndColumns;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
