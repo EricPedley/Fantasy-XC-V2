@@ -75,6 +75,18 @@ public class Server implements Runnable {
 					response = new FormHandler().handleForm(bodyObj);
 				}
 				sendResponse(dataOut, headerOut, response);// this handles writing all the headers and writing response
+			} else if(method.equals("PATCH")) {//basically does what it would do for a POST request.
+				String[] bodyAndContentType = readBody(in);
+				String contentType = bodyAndContentType[0];
+				String body = bodyAndContentType[1];
+				System.out.println("body:" + body);
+				JSONObject bodyObj = parseBody(body, contentType);
+				String response = "data was not form type(line 71 Server.java)";
+				System.out.println("content-type:" + contentType);
+				if (contentType.equals("application/x-www-form-urlencoded")) {// if the data is from a form
+					response = new FormHandler().handleForm(bodyObj);
+				}
+				sendResponse(dataOut, headerOut, response);// this handles writing all the headers and writing response
 			}
 
 		} catch (IOException e) {
