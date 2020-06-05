@@ -16,9 +16,11 @@ import org.json.JSONObject;
 public class Server implements Runnable {
 
 	Socket client;
+	String staticPath;
 
-	public Server(Socket s) {
+	public Server(Socket s, String staticPath) {
 		client = s;
+		this.staticPath=staticPath;
 	}
 
 	public void run() {// each time this method runs it handles one request
@@ -47,7 +49,7 @@ public class Server implements Runnable {
 				if (resource.endsWith("/")) {
 					resource += "index.html";
 				}
-				File file = new File("public/" + resource);
+				File file = new File(staticPath + resource);
 				String contentType = getContentType(resource);// content type is what type of file
 				byte[] outputData = readFileData(file);// converts file into array of bytes
 				dataOut = new BufferedOutputStream(client.getOutputStream());

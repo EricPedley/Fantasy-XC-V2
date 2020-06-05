@@ -9,14 +9,17 @@ public class Main {
 		
 		try {
 			String port = System.getenv("PORT");
+			String staticPath = System.getenv("PATH_TO_STATIC");
 			if (port == null) {
 				port = "6969";
 			}
-			@SuppressWarnings("resource")
+			if(staticPath==null) {
+				staticPath = "src/main/webapp/";
+			}
 			ServerSocket socket = new ServerSocket(Integer.parseInt(port));
 			System.out.println("Listening on port "+port);
 			while (true) {// each iteration of this loop handles a different request
-				Server s = new Server(socket.accept());
+				Server s = new Server(socket.accept(),staticPath);
 				Thread t = new Thread(s);
 				t.run();
 			}
