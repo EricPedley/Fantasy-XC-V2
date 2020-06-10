@@ -3,11 +3,38 @@ function loadLogin() {
     ReactDOM.render(e(Login), content);
     overrideLoginForms(true);
 }
+
+class AuthForm extends React.Component {
+    constructor() {
+        super(props);
+    }
+    render() {
+        return (
+            
+            <div style={{ height:"90vh"}} className="row align-items-center">
+                <div className="col-md-4"></div>
+                <center className="col-md-4" >
+                    <h3>{((this.props.type=="signup")?"Sign Up:":"Log In:")}</h3>
+                    <form name={this.props.type} method="POST" target="_self" className="formOverride">
+                        <input type="text" name="type" style={{ display: "none" }} value={0} readOnly={true}></input>
+                        <label>Username:</label><input type="text" name="user"></input><br></br>
+                        <label>Password:</label><input type="password" name="pass"></input><br></br>
+                        <input type="submit"></input><br></br>
+                    </form>
+                    <button onClick={((this.props.type=="signup")?loadLogin:loadSignup)}>{((this.props.type=="signup")?"Log In":"Sign up")}</button>
+                </center>
+                <div className="col-md-4"></div>
+            </div>
+        );
+    }
+}
 class Login extends React.Component {
     render() {
         return (
-            <div style={{ backgroundColor: "#FF0000" }} className="row">
-                <center className="col-md-12">
+            
+            <div style={{ height:"90vh"}} className="row align-items-center">
+                <div className="col-md-4"></div>
+                <center className="col-md-4" >
                     <h3>Login:</h3>
                     <form name="login" method="POST" target="_self" className="formOverride">
                         <input type="text" name="type" style={{ display: "none" }} value={0} readOnly={true}></input>
@@ -15,7 +42,9 @@ class Login extends React.Component {
                         <label>Password:</label><input type="password" name="pass"></input><br></br>
                         <input type="submit"></input><br></br>
                     </form>
+                    <button onClick={loadSignup}>Sign up</button>
                 </center>
+                <div className="col-md-4"></div>
             </div>
         );
     }
@@ -28,16 +57,19 @@ function loadSignup() {
 class Signup extends React.Component {
     render() {
         return (
-            <div style={{ backgroundColor: "#00FF00" }} className="row">
-                <center className="col-md-12">
-                    <h3>Signup:</h3>
+            <div style={{ height:"90vh"}} className="row align-items-center">
+                <div className="col-md-4"></div>
+                <center className="col-md-4" >
+                    <h3>Sign Up:</h3>
                     <form name="signup" method="POST" target="_self" className="formOverride">
                         <input type="text" name="type" style={{ display: "none" }} value={1} readOnly={true}></input>
-                        <input type="text" name="user"></input><br></br>
-                        <input type="password" name="pass"></input><br></br>
+                        <label>Username:</label><input type="text" name="user"></input><br></br>
+                        <label>Password:</label><input type="password" name="pass"></input><br></br>
                         <input type="submit"></input><br></br>
                     </form>
+                    <button onClick={loadLogin}>Log In</button>
                 </center>
+                <div className="col-md-4"></div>
             </div>
         );
     }

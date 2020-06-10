@@ -218,3 +218,30 @@ SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = -1 | Sun May 17 01:13:20
 SELECT athleteid, name FROM athleteIDs | Sun May 17 01:13:22 PDT 2020
 SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = -1 | Sun May 17 01:13:35 PDT 2020
 SELECT athleteid, name FROM athleteIDs | Sun May 17 01:13:37 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = -1 | Wed Jun 10 14:47:12 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Jun 10 14:47:27 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:47:28 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:49:59 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:50:20 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:50:49 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:51:58 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:52:30 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:53:53 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:55:15 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:55:32 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:56:32 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:58:04 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:58:16 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:58:36 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:58:57 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 14:59:53 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 15:00:12 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 15:00:58 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = -1 | Wed Jun 10 15:01:51 PDT 2020
+INSERT INTO users VALUES(DEFAULT,'small','man'); | Wed Jun 10 15:18:51 PDT 2020
+SELECT userID,password FROM users WHERE username='small' AND password='man' | Wed Jun 10 15:19:04 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 15:19:05 PDT 2020
+SELECT userID,password FROM users WHERE username='small' AND password='man' | Wed Jun 10 15:20:24 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 15:20:25 PDT 2020
+SELECT userID,password FROM users WHERE username='small' AND password='man' | Wed Jun 10 15:21:02 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 15:21:03 PDT 2020

@@ -9,18 +9,18 @@ function L(event,loadFunction) {
 class Navbar extends React.Component {
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-light row" style={{ backgroundColor: "cyan" }}>
-                <div className="navbar-brand" href="#">Fantasy XC</div>
+            <nav className="navbar navbar-expand-md navbar-light row" style={{ backgroundColor: "#005f1e"}}>
+                <div className="navbar-brand" href="#" style={{color:"#FFFFFF"}}>Fantasy XC</div>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <div className="navbar-nav mr-auto">
-                        <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadTeam();}}>My Team</a>
-                        <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadWaivers();}}>Waivers</a>
-                        <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadLeague();}}>League</a>
-                        <a className="nav-item nav-link mr-auto" href="" onClick={(event)=>{event.preventDefault();loadTrades();}}>Trades</a>
+                        <a className="nav-item nav-link" style={{color:"#FFFFFF"}} href="" onClick={(event)=>{event.preventDefault();loadTeam();}}>My Team</a>
+                        <a className="nav-item nav-link" style={{color:"#FFFFFF"}} href="" onClick={(event)=>{event.preventDefault();loadWaivers();}}>Waivers</a>
+                        <a className="nav-item nav-link" style={{color:"#FFFFFF"}} href="" onClick={(event)=>{event.preventDefault();loadLeague();}}>League</a>
+                        <a className="nav-item nav-link mr-auto" style={{color:"#FFFFFF"}} href="" onClick={(event)=>{event.preventDefault();loadTrades();}}>Trades</a>
                     </div>
                     <div id="navAuth"></div>
                 </div>
@@ -38,8 +38,8 @@ class navLogin extends React.Component {
     render() {
         return (
             <div  className="navbar-nav">
-                <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadLogin();}}>Login</a>
-                <a className="nav-item nav-link" href="" onClick={(event)=>{event.preventDefault();loadSignup();}}>Sign Up</a>
+                <a className="nav-item nav-link" style={{color:"#FFFFFF"}} href="" onClick={(event)=>{event.preventDefault();loadLogin();}}>Login</a>
+                <a className="nav-item nav-link" style={{color:"#FFFFFF"}} href="" onClick={(event)=>{event.preventDefault();loadSignup();}}>Sign Up</a>
             </div>
         );
     }
@@ -53,8 +53,8 @@ class navSignout extends React.Component {
     render() {
         return (
             <div className="navbar-nav">
-                <div className="nav-item nav-link">Hello, {localStorage.getItem('user')}</div>
-                <a className="nav-item nav-link" href="#" onClick={signOut}>Sign Out</a>
+                <div className="nav-item nav-link" style={{color:"#FFFFFF"}} >Hello, {localStorage.getItem('user')}</div>
+                <a className="nav-item nav-link" style={{color:"#FFFFFF"}}href="#" onClick={signOut}>Sign Out</a>
             </div>
         );
     }
@@ -62,6 +62,7 @@ class navSignout extends React.Component {
 function signOut() {
     localStorage.setItem('id', -1);
     localStorage.removeItem('user');
+    loadLogin();
     loadNavLogin();
 }
 
