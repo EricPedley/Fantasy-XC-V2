@@ -245,3 +245,34 @@ SELECT userID,password FROM users WHERE username='small' AND password='man' | We
 SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 15:20:25 PDT 2020
 SELECT userID,password FROM users WHERE username='small' AND password='man' | Wed Jun 10 15:21:02 PDT 2020
 SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 15:21:03 PDT 2020
+SELECT userID,password FROM users WHERE username='jose' AND password='madre' | Wed Jun 10 19:07:58 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Wed Jun 10 19:07:59 PDT 2020
+SELECT userID,password FROM users WHERE username='small' AND password='man' | Wed Jun 10 19:08:18 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 19:08:19 PDT 2020
+SELECT * FROM athleteIDs | Wed Jun 10 19:09:48 PDT 2020
+SELECT id,name FROM athleteIDs | Wed Jun 10 19:10:24 PDT 2020
+SELECT name FROM athleteIDs | Wed Jun 10 19:10:45 PDT 2020
+SELECT athleteid,name FROM athleteIDs | Wed Jun 10 19:11:07 PDT 2020
+INSERT INTO athleteIDs VALUES(111111,"Sid"); | Wed Jun 10 19:14:54 PDT 2020
+SELECT athleteid, name FROM athleteIDs | Wed Jun 10 19:15:35 PDT 2020
+SELECT athleteid, name FROM athleteIDs | Wed Jun 10 19:15:49 PDT 2020
+INSERT INTO athleteIDs VALUES(111111,'Sid'); | Wed Jun 10 19:16:36 PDT 2020
+SELECT athleteid, name FROM athleteIDs | Wed Jun 10 19:16:53 PDT 2020
+INSERT INTO athleteIDs VALUES(222222,'Andrew'); | Wed Jun 10 19:17:50 PDT 2020
+INSERT INTO athleteIDs VALUES(333333,'Rishab'); | Wed Jun 10 19:18:09 PDT 2020
+SELECT athleteid, name FROM athleteIDs | Wed Jun 10 19:18:21 PDT 2020
+INSERT INTO rosters VALUES(5,123456,6543210,696969,420420,111111,222222,333333); | Wed Jun 10 19:19:23 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 19:19:31 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 19:46:23 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 19:47:02 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 19:59:25 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 19:59:52 PDT 2020
+SELECT name FROM athleteIDs WHERE athleteid = 5 | Wed Jun 10 19:59:53 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Wed Jun 10 20:00:36 PDT 2020
+SELECT name FROM athleteIDs WHERE athleteid = 123456 | Wed Jun 10 20:00:36 PDT 2020
+SELECT name FROM athleteIDs WHERE athleteid = 6543210 | Wed Jun 10 20:00:37 PDT 2020
+SELECT name FROM athleteIDs WHERE athleteid = 696969 | Wed Jun 10 20:00:38 PDT 2020
+SELECT name FROM athleteIDs WHERE athleteid = 420420 | Wed Jun 10 20:00:38 PDT 2020
+SELECT name FROM athleteIDs WHERE athleteid = 111111 | Wed Jun 10 20:00:39 PDT 2020
+SELECT name FROM athleteIDs WHERE athleteid = 222222 | Wed Jun 10 20:00:40 PDT 2020
+SELECT name FROM athleteIDs WHERE athleteid = 333333 | Wed Jun 10 20:00:40 PDT 2020
