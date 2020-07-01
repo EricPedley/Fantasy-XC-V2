@@ -11,17 +11,21 @@ class TeamView extends React.Component {
     render() {
         return (
             <div>
-                <center id="cards" ><h1>My Team</h1></center>
                 <div className="row" >
-                    <div className="col" id="r1">Col 1</div>
-                    <div className="col" id="r2">Col 2</div>
-                    <div className="col" id="r3">Col 3</div>
-                    <div className="col" id="r4">Col 4</div>
-                    <div className="col" id="r5">Col 5</div>
-                    <div className="col" id="r6">Col 6</div>
-                    <div className="col" id="r7">Col 7</div>
+                    <div className="col-md-6">Next Meet</div>
+                    <div className="col-md-6">
+                        <div className="row">Top text</div>
+                        <div className="row">
+                            <div className="col" id="r1">Col 1</div>
+                            <div className="col" id="r2">Col 2</div>
+                            <div className="col" id="r3">Col 3</div>
+                            <div className="col" id="r4">Col 4</div>
+                            <div className="col" id="r5">Col 5</div>
+                            <div className="col" id="r6">Col 6</div>
+                            <div className="col" id="r7">Col 7</div>
+                        </div>
+                    </div>
                 </div>
-                <center><h2>Next Meet</h2></center>
                 <div className="row" style={{ height: "50vh" }}>
                     <div className="col-md-6" style={{ backgroundColor: "#00FF00" }}>Roster</div>
                     <div className="col-md-6" style={{ backgroundColor: "#FF0000" }}>Bench</div>
