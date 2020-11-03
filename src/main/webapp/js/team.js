@@ -45,19 +45,23 @@ function getRoster(id) {
     getReq(target, [["Content-Type", "text/plain"]],
         function (request) {
             console.log(request.responseText);
-            var runners = request.responseText.split(",");
+            let runners;
+            if (!request.responseText.endsWith("came up empty"))
+                runners = request.responseText.split(",");
+            else
+                console.log("bruh")
             let counter = 1;
             let r;
-
-            for (r of runners) {//r is the runner's id
-                getReq(removeFragment(window.location.href) + `Runner?id=${r}`, [["Content-Type", "text/plain"]],
-                    function (request) {
-                        let card = document.querySelector(`#r${counter}`);
-                        card.innerHTML = request.responseText;
-                        counter++;
-                    }
-                );
-            }
+            if (runners)
+                for (r of runners) {//r is the runner's id
+                    getReq(removeFragment(window.location.href) + `Runner?id=${r}`, [["Content-Type", "text/plain"]],
+                        function (request) {
+                            let card = document.querySelector(`#r${counter}`);
+                            card.innerHTML = request.responseText;
+                            counter++;
+                        }
+                    );
+                }
             return request.responseText;//this return statement never runs b/c of async stuff, need to use a promise or something
         }
     );
@@ -81,5 +85,6 @@ function getReq(target, headers, callback) {
             request.setRequestHeader(header[0], header[1]);
         }
     }
+    //TODO make it work without body text. seriously, wtf?
     request.send("it won't work without body text for some reason");
 }

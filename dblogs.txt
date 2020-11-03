@@ -308,3 +308,110 @@ SELECT name FROM athleteIDs WHERE athleteid = 420420 | Wed Jun 10 23:41:50 PDT 2
 SELECT name FROM athleteIDs WHERE athleteid = 111111 | Wed Jun 10 23:41:51 PDT 2020
 SELECT name FROM athleteIDs WHERE athleteid = 222222 | Wed Jun 10 23:41:51 PDT 2020
 SELECT name FROM athleteIDs WHERE athleteid = 333333 | Wed Jun 10 23:41:52 PDT 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Tue Nov 03 11:11:18 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 123456 | Tue Nov 03 11:11:19 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 6543210 | Tue Nov 03 11:11:19 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 696969 | Tue Nov 03 11:11:20 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 420420 | Tue Nov 03 11:11:21 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 111111 | Tue Nov 03 11:11:21 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 222222 | Tue Nov 03 11:11:22 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 333333 | Tue Nov 03 11:11:23 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Tue Nov 03 11:11:38 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 123456 | Tue Nov 03 11:11:38 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 6543210 | Tue Nov 03 11:11:39 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 696969 | Tue Nov 03 11:11:40 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 420420 | Tue Nov 03 11:11:40 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 111111 | Tue Nov 03 11:11:41 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 222222 | Tue Nov 03 11:11:42 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 333333 | Tue Nov 03 11:11:42 PST 2020
+SELECT userID,password FROM users WHERE username='sgdfgsdfg' AND password='sdfgsdfgsd' | Tue Nov 03 11:11:57 PST 2020
+SELECT userID,password FROM users WHERE username='hax0r'+OR+password~*+'%'+;--' AND password='' | Tue Nov 03 11:14:45 PST 2020
+SELECT userID,password FROM users WHERE username='hax0r'\nOR\npassword~*'%'+--' AND password='' | Tue Nov 03 11:18:18 PST 2020
+SELECT userID,password FROM users WHERE username='spaces+are+pluses?' AND password='' | Tue Nov 03 11:19:09 PST 2020
+SELECT userID,password FROM users WHERE username='hax0r'%20OR%20password~*'%'+--' AND password='' | Tue Nov 03 11:20:06 PST 2020
+SELECT userID,password FROM users WHERE username='hello+world!' AND password='' | Tue Nov 03 11:27:09 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = query%20did%20not%20return%20anything | Tue Nov 03 11:27:09 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = query%20did%20not%20return%20anything | Tue Nov 03 11:29:38 PST 2020
+SELECT userID,password FROM users WHERE username='hello+world!' AND password='' | Tue Nov 03 11:29:53 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = sorry,%20could%20not%20find%20this%20combo%20of%20username%20and%20password | Tue Nov 03 11:29:54 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = sorry,%20could%20not%20find%20this%20combo%20of%20username%20and%20password | Tue Nov 03 11:32:28 PST 2020
+SELECT userID,password FROM users WHERE username='hello+world!' AND password='' | Tue Nov 03 11:32:42 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = sorry,%20could%20not%20find%20this%20combo%20of%20username%20and%20password | Tue Nov 03 11:32:42 PST 2020
+SELECT userID,password FROM users WHERE username='hello,+world!' AND password='' | Tue Nov 03 11:33:39 PST 2020
+SELECT userID,password FROM users WHERE username='hello,+world!' AND password='' | Tue Nov 03 11:34:11 PST 2020
+SELECT userID,password FROM users WHERE username='hello world' AND password='' | Tue Nov 03 11:34:57 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password ~* '%'--' AND password='' | Tue Nov 03 11:38:46 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password ~* '%';--' AND password='' | Tue Nov 03 11:39:21 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password ~* '.*';--' AND password='' | Tue Nov 03 11:40:15 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password LIKE '%';--' AND password='' | Tue Nov 03 11:40:59 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password LIKE '%' LIMIT 1;--' AND password='' | Tue Nov 03 11:41:36 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password LIKE '%' limit 1;--' AND password='' | Tue Nov 03 11:43:25 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password LIKE '%' GROUP BY 1;--' AND password='' | Tue Nov 03 11:44:16 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password LIKE '%' LIMIT 1;--' AND password='' | Tue Nov 03 11:53:08 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password LIKE '%' ORDER BY password LIMIT 1;--' AND password='' | Tue Nov 03 12:00:41 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password ~* '%' ORDER BY password LIMIT 1;--' AND password='' | Tue Nov 03 12:01:36 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password ~* '\d*' ORDER BY password LIMIT 1;--' AND password='' | Tue Nov 03 12:02:23 PST 2020
+INSERT INTO users VALUES(DEFAULT,'idiot','abc123'); | Tue Nov 03 12:05:33 PST 2020
+SELECT userID,password FROM users WHERE username='idiot' AND password='abc123' | Tue Nov 03 12:07:33 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 6 | Tue Nov 03 12:07:34 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = query%20for%20rosters%20for%20id%206%20came%20up%20empty | Tue Nov 03 12:07:35 PST 2020
+SELECT userID,password FROM users WHERE username='h@x0r' OR password  = 'abc123'--' AND password='' | Tue Nov 03 12:08:10 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 6 | Tue Nov 03 12:08:11 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = query%20for%20rosters%20for%20id%206%20came%20up%20empty | Tue Nov 03 12:08:12 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1--' AND password='' | Tue Nov 03 12:10:53 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 1 | Tue Nov 03 12:10:53 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = query%20for%20rosters%20for%20id%201%20came%20up%20empty | Tue Nov 03 12:10:54 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1--' AND password='' | Tue Nov 03 12:13:55 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 1 | Tue Nov 03 12:13:56 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = query%20for%20rosters%20for%20id%201%20came%20up%20empty | Tue Nov 03 12:13:57 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1--' AND password='' | Tue Nov 03 12:18:14 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 1 | Tue Nov 03 12:18:15 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = query%20for%20rosters%20for%20id%201%20came%20up%20empty | Tue Nov 03 12:18:16 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1--' AND password='' | Tue Nov 03 12:19:58 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 1 | Tue Nov 03 12:19:59 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = query%20for%20rosters%20for%20id%201%20came%20up%20empty | Tue Nov 03 12:20:00 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 1 | Tue Nov 03 12:20:19 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1--' AND password='' | Tue Nov 03 12:20:22 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 1 | Tue Nov 03 12:20:23 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 1 | Tue Nov 03 12:20:55 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1 OFFSET 1--' AND password='' | Tue Nov 03 12:21:12 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 2 | Tue Nov 03 12:21:13 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1 OFFSET 2--' AND password='' | Tue Nov 03 12:21:37 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 3 | Tue Nov 03 12:21:38 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1 OFFSET 3--' AND password='' | Tue Nov 03 12:21:56 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Tue Nov 03 12:21:57 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 1 | Tue Nov 03 12:21:57 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Tue Nov 03 12:23:02 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 1 | Tue Nov 03 12:23:03 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Tue Nov 03 12:24:11 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 1 | Tue Nov 03 12:24:11 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 4 | Tue Nov 03 12:24:32 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 1 | Tue Nov 03 12:24:33 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 2 | Tue Nov 03 12:24:34 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 3 | Tue Nov 03 12:24:34 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 4 | Tue Nov 03 12:24:35 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 5 | Tue Nov 03 12:24:36 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 6 | Tue Nov 03 12:24:36 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 7 | Tue Nov 03 12:24:37 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1 OFFSET 5--' AND password='' | Tue Nov 03 12:26:40 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 6 | Tue Nov 03 12:26:41 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1 OFFSET 4--' AND password='' | Tue Nov 03 12:27:04 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Tue Nov 03 12:27:05 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 123456 | Tue Nov 03 12:27:05 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 6543210 | Tue Nov 03 12:27:06 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 696969 | Tue Nov 03 12:27:07 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 420420 | Tue Nov 03 12:27:07 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 111111 | Tue Nov 03 12:27:08 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 222222 | Tue Nov 03 12:27:09 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 333333 | Tue Nov 03 12:27:09 PST 2020
+SELECT userID,password FROM users WHERE username='a' UNION SELECT password, userID FROM users WHERE username LIKE '%' LIMIT 1-- ' AND password='' | Tue Nov 03 12:32:23 PST 2020
+SELECT userID,password FROM users WHERE username='a';SELECT password FROM users LIMIT 1--' AND password='' | Tue Nov 03 12:36:06 PST 2020
+SELECT userID,password FROM users WHERE username='a' OR password LIKE '%' LIMIT 1 OFFSET 4--' AND password='' | Tue Nov 03 12:38:08 PST 2020
+SELECT r1,r2,r3,r4,r5,r6,r7 FROM rosters where userID = 5 | Tue Nov 03 12:38:09 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 123456 | Tue Nov 03 12:38:10 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 6543210 | Tue Nov 03 12:38:11 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 696969 | Tue Nov 03 12:38:11 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 420420 | Tue Nov 03 12:38:12 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 111111 | Tue Nov 03 12:38:13 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 222222 | Tue Nov 03 12:38:13 PST 2020
+SELECT name FROM athleteIDs WHERE athleteid = 333333 | Tue Nov 03 12:38:14 PST 2020

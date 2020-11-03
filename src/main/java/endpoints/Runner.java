@@ -12,6 +12,8 @@ public class Runner implements Endpoint {
 		System.out.println("handling get for one runner");
 		String statement = "SELECT name FROM athleteIDs WHERE athleteid = "+params.getString("id");
 		ArrayList<ArrayList<String>> results = DatabaseConnector.executeQuery(statement);
+		if(results==null||results.size()<1)
+			return "no runner found";
 		return results.get(0).get(0);
 	}
 
